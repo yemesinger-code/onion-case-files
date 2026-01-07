@@ -26,6 +26,20 @@ const Index = () => {
         
         {/* Desk surface */}
         <div className="relative z-10 container py-16 text-center">
+          {/* Character Portrait Placeholder */}
+          <div 
+            className="w-[300px] h-[300px] mx-auto mb-8 rounded-full border-4 border-secondary bg-muted/30 flex items-center justify-center shadow-desk overflow-hidden"
+            aria-label="Detective Onion character portrait"
+          >
+            {/* Replace this placeholder with: import detectiveOnion from '@/assets/detective-onion.png' */}
+            <div className="text-muted-foreground text-center p-4">
+              <div className="text-6xl mb-2">🧅</div>
+              <span className="font-cousine text-xs uppercase tracking-wide">
+                Portrait Coming Soon
+              </span>
+            </div>
+          </div>
+          
           <h1 
             id="hero-heading"
             className="font-heebo font-black text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 drop-shadow-lg"
