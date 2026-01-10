@@ -2,9 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
-import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import Index from "./pages/Index";
 import Cases from "./pages/Cases";
@@ -13,8 +12,42 @@ import Equipment from "./pages/Equipment";
 import Parents from "./pages/Parents";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
+
+// רכיב לגלילה לראש הדף בעת מעבר בין דפים
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// רכיב פנימי שמכיל את כל הראוטינג
+function AppRoutes() {
+  return (
+    <>
+      <ScrollToTop />
+      <div className="min-h-screen flex flex-col">
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/cases" element={<Cases />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/equipment" element={<Equipment />} />
+          <Route path="/parents" element={<Parents />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </div>
+    </>
+  );
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -23,20 +56,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/cases" element={<Cases />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/equipment" element={<Equipment />} />
-              <Route path="/parents" element={<Parents />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
-          </div>
+          <AppRoutes />
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
