@@ -13,7 +13,8 @@ const Home = () => {
       <Navbar />
       
       <main className="flex-1">
-        {/* 1. Hero Title (No Buttons) */}
+        
+        {/* 1. Hero Title */}
         <section id="hero">
           <Hero />
         </section>
@@ -23,7 +24,7 @@ const Home = () => {
           <SocialProof />
         </section>
 
-        {/* 3. Does it sound familiar? (Pain Points) */}
+        {/* 3. Does it sound familiar? */}
         <section id="pain-points">
           <PainPoints />
         </section>
@@ -33,22 +34,22 @@ const Home = () => {
           <Solution />
         </section>
 
-        {/* 5. About Detective Onion (Background) */}
+        {/* 5. About Detective Onion */}
         <section id="about">
           <AboutDetectiveOnion />
         </section>
 
-        {/* 6. Meet The Cast (Characters) */}
+        {/* 6. Meet The Cast */}
         <section id="cast">
           <MeetTheCast />
         </section>
         
-        {/* 7. What's Included (How It Works) */}
+        {/* 7. What's Included */}
         <section id="how-it-works">
           <HowItWorks />
         </section>
         
-        {/* 8. Final CTA (Download Button MOVED HERE) */}
+        {/* 8. Final CTA (Download Button) */}
         <section id="cta">
           <FinalCTA />
         </section>
