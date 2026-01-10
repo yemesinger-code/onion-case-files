@@ -1,40 +1,10 @@
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ShoppingBag, Clock, Star, ShieldAlert, Download, Check } from 'lucide-react';
+import { ShoppingBag, Clock, Star, ShieldAlert, Download } from 'lucide-react';
+import { getDigitalProducts } from '@/data/products';
 
 const Shop = () => {
-  const cases = [
-    {
-      id: "001",
-      title: "תעלומת העוגייה הנעלמת",
-      desc: "מי גנב את העוגייה מהצנצנת הסגורה? חקירה שמשלבת טביעות אצבע וכימיה של אבקות.",
-      difficulty: "מתחילים (גילאי 6-9)",
-      time: "45 דקות",
-      price: 9.90,
-      imageColor: "bg-orange-100",
-      icon: "🍪"
-    },
-    {
-      id: "002",
-      title: "השמרים שלא תפחו",
-      desc: "למה הפיצה של ברוך האופה נשארה שטוחה? חקירה ביולוגית מרתקת על יצורים מיקרוסקופיים.",
-      difficulty: "מתקדמים (גילאי 8-12)",
-      time: "60 דקות",
-      price: 9.90,
-      imageColor: "bg-blue-100",
-      icon: "🍕"
-    },
-    {
-      id: "003",
-      title: "תעלומת הלימונדה הסגולה",
-      desc: "איך המשקה שינה את צבעו לבד? ניסוי בחומצות ובסיסים שנראה כמו קסם אמיתי.",
-      difficulty: "לכל המשפחה",
-      time: "30 דקות",
-      price: 9.90,
-      imageColor: "bg-purple-100",
-      icon: "🍋"
-    }
-  ];
+  const cases = getDigitalProducts();
 
   return (
     <div className="min-h-screen bg-background flex flex-col" dir="rtl">
@@ -80,17 +50,21 @@ const Shop = () => {
                   </header>
 
                   <p className="text-muted-foreground text-sm mb-4 flex-1">
-                    {item.desc}
+                    {item.description}
                   </p>
 
                   {/* Meta Data */}
                   <div className="flex flex-wrap gap-2 text-xs mb-4">
-                    <span className="bg-muted text-muted-foreground px-2 py-1 rounded-full flex items-center gap-1">
-                      <Star className="w-3 h-3" /> {item.difficulty}
-                    </span>
-                    <span className="bg-muted text-muted-foreground px-2 py-1 rounded-full flex items-center gap-1">
-                      <Clock className="w-3 h-3" /> {item.time}
-                    </span>
+                    {item.metadata?.difficulty && (
+                      <span className="bg-muted text-muted-foreground px-2 py-1 rounded-full flex items-center gap-1">
+                        <Star className="w-3 h-3" /> {item.metadata.difficulty}
+                      </span>
+                    )}
+                    {item.metadata?.time && (
+                      <span className="bg-muted text-muted-foreground px-2 py-1 rounded-full flex items-center gap-1">
+                        <Clock className="w-3 h-3" /> {item.metadata.time}
+                      </span>
+                    )}
                   </div>
 
                   {/* Price & Action */}
