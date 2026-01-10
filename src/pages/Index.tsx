@@ -1,290 +1,476 @@
 import { useState } from 'react';
-import { Check, Star, Brain, Shield, Users, Zap, Trophy, Heart, Download, FileText, ChevronLeft, Beaker, Lightbulb, Puzzle } from 'lucide-react';
+import Navbar from '@/components/Navbar'; 
+import { Check, Star, Brain, Shield, Users, Zap, Trophy, Heart, Download, FileText, ChevronLeft, Beaker } from 'lucide-react';
 
-const Index = () => {
-  // פונקציה לגלילה חלקה לאזור הרכישה
+const ParentsLandingPage = () => {
+  // פונקציה טכנית לגלילה חלקה לאזור הרכישה
   const scrollToProduct = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 font-heebo" dir="rtl">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-white font-heebo" dir="rtl">
 
-      {/* 1. Hero Section - id="top" */}
-      <section id="top" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Trophy size={16} />
-              <span> הפעילות שכבשה מעל 1,000 מטבחים בישראל</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
-              להפוך את המטבח
-              <span className="block text-transparent bg-clip-text bg-gradient-to-l from-orange-600 to-amber-500">
-                למעבדת חשיבה לילדים
-              </span>
+      {/* תוספת טכנית: תפריט עליון */}
+      <Navbar />
+
+      {/* Hero Section */}
+      <section id="top" className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-100/50 via-transparent to-transparent"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-1.5 rounded-full text-sm font-medium mb-6 shadow-sm">
+               ✨ מומלץ על ידי הורים ואנשי חינוך
+            </span>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight mb-6">
+               תנו לילדים שלכם להתאהב בחשיבה 🧅🔍
             </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              במקום עוד שעה מול המסך: תנו לילדים שלכם תעלומה בלשית שפותרים באמצעות ניסוי מדעי אמיתי (וטעים!) במטבח.
+
+            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+               עלילה בלשית מרתקת + ניסוי מדעי מעשי = חוויית למידה בלתי נשכחת במטבח הביתי שלכם
             </p>
-            
-            <div className="flex flex-col items-center gap-4">
-              <button 
-                onClick={scrollToProduct}
-                className="group bg-gradient-to-l from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg transform transition hover:scale-105 flex items-center gap-2"
-              >
-                אני רוצה להוריד את התעלומה
-                <ChevronLeft className="transition-transform group-hover:-translate-x-1" />
-              </button>
-              <p className="text-sm text-gray-500 flex items-center gap-2">
-                <Shield size={14} />
-                רכישה מאובטחת • הורדה מיידית
-              </p>
+
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500 mb-8">
+              <div className="flex items-center gap-1.5">
+                <Shield className="w-4 h-4 text-green-600" />
+                בטוח לגמרי לילדים
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                דירוג 4.9/5
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Users className="w-4 h-4 text-blue-600" />
+                למעלה מ-1,000 משפחות
+              </div>
             </div>
+            
+            {/* כפתור מחובר לפונקציית הגלילה */}
+            <div className="flex flex-col items-center gap-4">
+                <button onClick={scrollToProduct} className="group bg-gradient-to-l from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white text-lg font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-orange-500/40 transition-all transform hover:scale-105 flex items-center gap-2">
+                  אני רוצה להוריד את התעלומה
+                  <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+                </button>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* 2. Pain Points - "האם זה מוכר לכם?" */}
-      <section className="py-12 bg-white/50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">
-            האתגר של ההורים היום 🤔
+      {/* The Problem - מחובר ל-id="about" לצורך ניווט */}
+      <section id="about" className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-black text-center text-gray-800 mb-12">
+             האם זה נשמע מוכר? 🤔
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+           
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
-              { icon: "📱", text: "הילדים 'זומבים' מול המסכים ללא תוכן מעשיר" },
-              { icon: "😴", text: "משעמם להם מהר ממשחקים רגילים וצעצועים" },
-              { icon: "🤯", text: "אתם מחפשים פעילות שתפעיל להם את הראש" },
-              { icon: "🧪", text: "רוצים להכניס מדע וסקרנות הביתה בדרך כיפית" }
+              { icon: "📱", text: "הילדים דבוקים למסכים ללא תוכן משמעותי" },
+              { icon: "😴", text: "משעמם להם במהרה ממשחקים חוזרים" },
+              { icon: "🔬", text: "אתם מחפשים דרך מהנה ללמד מדע בבית" },
+              { icon: "🧠", text: "רוצים לפתח חשיבה לוגית ויצירתית" }
             ].map((item, index) => (
-              <div key={index} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center gap-3">
-                <span className="text-2xl">{item.icon}</span>
-                <p className="text-gray-700 font-medium">{item.text}</p>
+              <div key={index} className="bg-gray-50 rounded-2xl p-6 text-center border-2 border-gray-100 hover:border-orange-200 transition-colors">
+                <span className="text-4xl mb-4 block">{item.icon}</span>
+                <p className="font-medium text-gray-700">{item.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. NEW MARKETING SECTION - Educational Value - id="about" */}
-      <section id="about" className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-orange-600 font-bold text-sm uppercase tracking-wider">השיטה הייחודית</span>
-            <h2 className="text-3xl md:text-4xl font-black mt-2 text-gray-900">
-              למה דווקא "בילוש במטבח"?
+      {/* The Solution */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-amber-50/50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-800 mb-4">
+               הפתרון: חוויה בלשית-מדעית במטבח שלכם 🎯
             </h2>
-            <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-              זה לא רק משחק. זו שיטת לימוד שמשלבת שלושה אלמנטים קריטיים להתפתחות הילד, 
-              שעובדים יחד כדי ליצור חוויה בלתי נשכחת.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+               כל עלילה משלבת תעלומה מרתקת עם ניסוי מדעי מעשי שהילדים יכולים לבצע בבית
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-orange-500">
-              <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-5">
-                <Brain className="text-orange-600" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">מפסיביות לאקטיביות</h3>
-              <p className="text-gray-600">
-                במקום לצפות ביוטיוב, הילד הופך לגיבור הסיפור. הוא חייב לקרוא, לחשוב, למדוד ולערבב כדי להתקדם. זה בונה תחושת מסוגלות אדירה ("אני פתרתי את זה!").
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-purple-500">
-              <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-5">
-                <Beaker className="text-purple-600" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">מדע שמרגיש כמו קסם</h3>
-              <p className="text-gray-600">
-                אנחנו לא מלמדים נוסחאות משעממות. אנחנו מראים איך כרוב משנה צבע ואיך שמרים מתנפחים. הילדים לומדים כימיה ופיזיקה דרך הידיים והעיניים.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-pink-500">
-              <div className="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mb-5">
-                <Heart className="text-pink-600" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">זמן איכות אמיתי</h3>
-              <p className="text-gray-600">
-                בלי מסכים שמפרידים ביניכם. אתם והילדים עובדים כצוות חקירה משותף. הצחוקים, הלכלוך (הבריא) וההצלחה המשותפת בונים זיכרונות לכל החיים.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Brain,
+                color: "text-purple-500",
+                bgColor: "bg-purple-500/10",
+                title: "פיתוח חשיבה ביקורתית",
+                description: "ניתוח ראיות, זיהוי דפוסים והסקת מסקנות - מיומנויות לכל החיים",
+                benefits: ["חשיבה לוגית", "פתרון בעיות", "קבלת החלטות"]
+              },
+              {
+                icon: Beaker,
+                color: "text-blue-500",
+                bgColor: "bg-blue-500/10",
+                title: "למידה מדעית מעשית",
+                description: "ניסויים פשוטים ובטוחים שמלמדים עקרונות מדעיים בצורה מהנה",
+                benefits: ["חקר מדעי", "התנסות מעשית", "הבנת תופעות"]
+              },
+              {
+                icon: Heart,
+                color: "text-red-500",
+                bgColor: "bg-red-500/10",
+                title: "זמן איכות משפחתי",
+                description: "פעילות משפחתית שמחברת את כל המשפחה סביב למידה והנאה",
+                benefits: ["חוויה משותפת", "שיחה ודיון", "זיכרונות משפחתיים"]
+              }
+            ].map((benefit, index) => {
+              const Icon = benefit.icon;
+              return (
+                <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                  <div className={`w-14 h-14 ${benefit.bgColor} rounded-xl flex items-center justify-center mb-6`}>
+                    <Icon className={`w-7 h-7 ${benefit.color}`} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {benefit.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {benefit.benefits.map((item, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-gray-500">
+                        <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 4. What's Inside - id="how-it-works" */}
-      <section id="how-it-works" className="py-16 bg-gradient-to-l from-orange-100 to-amber-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black mb-6 text-gray-900">
-                מה מחכה לכם בתוך הקובץ? 📁
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                מיד לאחר הרכישה תקבלו למייל קובץ PDF מעוצב וצבעוני, מוכן להדפסה (או לקריאה בטאבלט), הכולל:
-              </p>
-              
-              <ul className="space-y-4">
+      {/* What's Inside - מחובר ל-id="how-it-works" לצורך ניווט */}
+      <section id="how-it-works" className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-800 mb-4">
+               מה כלול בכל עלילה? 📄
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+               מסמך PDF מקיף עם כל מה שצריך
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 border-2 border-amber-200">
+              <span className="text-5xl mb-4 block">🔍</span>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                 העלילה הבלשית
+              </h3>
+              <ul className="space-y-3">
                 {[
-                  "סיפור מתח בלשי מלא (מותאם גיל)",
-                  "דפי משימות ורמזים לגזירה",
-                  "מתכון מדעי עם הסברים פשוטים",
-                  "הסבר 'איך זה עובד?' להורים סקרנים",
-                  "תעודת 'בלש מצטיין' בסיום"
+                  'תעלומה מרתקת לפתרון',
+                  'דמויות מעניינות ומצחיקות',
+                  'רמזים וחידות לאורך הדרך',
+                  'פתרון מפתיע ומלמד'
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                      <Check size={14} className="text-white" />
-                    </span>
-                    <span className="text-gray-800 font-medium">{item}</span>
+                  <li key={i} className="flex items-center gap-2 text-gray-700">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    {item}
                   </li>
                 ))}
               </ul>
             </div>
-            
-            {/* Visual representation of the product */}
-            <div className="relative flex justify-center">
-              <div className="w-64 h-80 bg-gradient-to-br from-amber-100 to-orange-200 rounded-lg shadow-2xl transform rotate-3 absolute"></div>
-              <div className="w-64 h-80 bg-gradient-to-br from-orange-100 to-amber-200 rounded-lg shadow-2xl transform -rotate-3 absolute"></div>
-              <div className="relative w-64 h-80 bg-white rounded-lg shadow-2xl flex flex-col items-center justify-center p-6 border-2 border-orange-200">
-                <FileText size={48} className="text-orange-500 mb-4" />
-                <p className="font-bold text-gray-800 text-center">תיק חקירה #001</p>
-                <p className="text-sm text-gray-500 text-center mt-1">תעלומת העוגייה הנעלמת</p>
-                <div className="mt-4 w-full border-t border-dashed border-gray-300 pt-4">
-                  <div className="h-2 bg-gray-200 rounded w-full mb-2"></div>
-                  <div className="h-2 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-2 bg-gray-200 rounded w-5/6"></div>
-                </div>
-                <span className="mt-4 text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full">
-                  PDF להורדה
-                </span>
-              </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border-2 border-blue-200">
+              <span className="text-5xl mb-4 block">🔬</span>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                 הניסוי המדעי
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  'הוראות צעד אחר צעד מפורטות',
+                  'רשימת חומרים פשוטים מהמטבח',
+                  'הסברים מדעיים מותאמים לילדים',
+                  'שאלות לחשיבה ודיון'
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-2 text-gray-700">
+                    <Check className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
+          </div>
+
+          <div className="mt-12 text-center max-w-2xl mx-auto">
+            <FileText className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-gray-800 mb-2">
+               פורמט נוח ונגיש
+            </h3>
+            <p className="text-gray-600">
+               קובץ PDF איכותי שניתן להדפיס או לקרוא ממסך. 
+               כל ההוראות ברורות ומלוות באיורים צבעוניים.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* 5. Age Suitability */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-12 text-gray-900">
-            מותאם בדיוק לגיל הילד שלכם
+      {/* Age Suitability */}
+      <section className="py-16 md:py-24 bg-amber-50/50">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-black text-center text-gray-800 mb-12">
+             מתאים לכל גיל 👶➡️👦➡️👧
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+           
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              { age: "6-8", title: "בלשים צעירים", desc: "דגש על חוויה, צבעים וניסויים ויזואליים פשוטים.", color: "border-green-400 bg-green-50" },
-              { age: "9-12", title: "חוקרים מתקדמים", desc: "עלילות מורכבות יותר, חשיבה לוגית והרחבת ידע.", color: "border-blue-400 bg-blue-50" },
-              { age: "13+", title: "נוער ומבוגרים", desc: "אתגר מחשבתי אמיתי וניסויים ברמת 'מאסטר-שף'.", color: "border-purple-400 bg-purple-50" }
-            ].map((level, i) => (
-              <div key={i} className={`rounded-2xl p-6 border-2 ${level.color} text-center`}>
-                <p className="text-3xl font-black text-gray-800">{level.age}</p>
-                <p className="font-bold text-lg mt-2 text-gray-700">{level.title}</p>
-                <p className="text-gray-600 mt-2 text-sm">{level.desc}</p>
+              {
+                age: "6-8",
+                emoji: "🌱",
+                title: "גילאי הגן - כיתה ב'",
+                features: ["תעלומות פשוטות", "ניסויים בסיסיים", "בליווי הורים"],
+                color: "border-green-500/40 bg-green-500/5"
+              },
+              {
+                age: "9-12",
+                emoji: "🌳",
+                title: "כיתות ג'-ו'",
+                features: ["אתגרים מורכבים", "ביצוע עצמאי יותר", "הרחבת ידע מדעי"],
+                color: "border-blue-500/40 bg-blue-500/5"
+              },
+              {
+                age: "13+",
+                emoji: "🎓",
+                title: "בני נוער ומבוגרים",
+                features: ["תעלומות מתקדמות", "הרחבת ידע מדעי", "ניסויים מורכבים"],
+                color: "border-purple-500/40 bg-purple-500/5"
+              }
+            ].map((level, index) => (
+              <div key={index} className={`rounded-2xl p-6 border-2 text-center ${level.color}`}>
+                <span className="text-4xl block mb-2">{level.emoji}</span>
+                <span className="text-3xl font-black text-gray-800 block mb-1">{level.age}</span>
+                <h3 className="font-bold text-gray-700 mb-4">{level.title}</h3>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  {level.features.map((feature, i) => (
+                    <li key={i} className="flex items-center justify-center gap-2">
+                      <Check className="w-4 h-4 text-green-600" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6. Testimonials - id="reviews" */}
-      <section id="reviews" className="py-16 bg-white/70">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-12 text-gray-900">
-            מה הורים מספרים בקבוצות הוואטסאפ 💬
+      {/* Testimonials - מחובר ל-id="reviews" לצורך ניווט */}
+      <section id="reviews" className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-black text-center text-gray-800 mb-4">
+             מה הורים אומרים 💬
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+           
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
-              { name: "מיכל א.", text: "הבן שלי (ששונא לקרוא) ישב וקרא את כל התיק בשקיקה! הניסוי עם הכרוב היה להיט.", stars: 5 },
-              { name: "רועי ג.", text: "חיפשתי פעילות ליום גשום וזה הציל אותנו. שעתיים של שקט ותעסוקה איכותית.", stars: 5 },
-              { name: "דנית ס.", text: "הערך המוסף הוא אדיר. הם גם נהנים וגם לומדים מדע בלי לשים לב.", stars: 5 }
-            ].map((review, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-lg">
-                <div className="flex gap-1 mb-3">
-                  {[...Array(review.stars)].map((_, idx) => (
-                    <Star key={idx} size={18} className="fill-yellow-400 text-yellow-400" />
+              {
+                name: "רונית כהן",
+                role: "אמא לשני ילדים (7 ו-10)",
+                text: "הילדים שלי ממש התרגשו מהעלילה והניסוי! עשינו את זה ביחד במטבח ולמדנו המון. זמן איכות משפחתי מושלם.",
+                rating: 5
+              },
+              {
+                name: "דני לוי",
+                role: "מורה לכיתה ד'",
+                text: "משתמש בעלילות בכיתה כפעילות העשרה. התלמידים מתלהבים והניסויים ממש עובדים! מומלץ בחום.",
+                rating: 5
+              },
+              {
+                name: "שרה אברהם",
+                role: "אמא לבן בן 12",
+                text: "הבן שלי התקשה בקריאה ולא אהב מדעים. העלילות הבלשיות שינו את זה לגמרי - עכשיו הוא מבקש עוד!",
+                rating: 5
+              },
+              {
+                name: "יוסי מזרחי",
+                role: "אבא לשלושה ילדים",
+                text: "פעילות משפחתית מושלמת לשישי אחה״צ! הניסויים פשוטים ובטוחים, והעלילות ממש מרתקות. שווה כל שקל!",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 leading-relaxed">"{review.text}"</p>
-                <p className="font-bold text-gray-800">{review.name}</p>
+                <p className="text-gray-700 mb-4 leading-relaxed">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold">
+                     👤
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-800">{testimonial.name}</p>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7. Product & Pricing - id="products" */}
-      <section id="products" className="py-20 bg-gradient-to-b from-orange-500 to-amber-600">
-        <div className="container mx-auto px-4 text-center text-white">
-          <div className="max-w-2xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-gray-800">
-            
-            <span className="inline-block bg-red-500 text-white text-sm font-bold px-4 py-1 rounded-full mb-4">
-              מבצע השקה
-            </span>
-
-            <h2 className="text-3xl md:text-4xl font-black mb-2">
-              התעלומה הראשונה מחכה לכם!
+      {/* Pricing - מחובר ל-id="products" לצורך ניווט */}
+      <section id="products" className="py-16 md:py-24 bg-gradient-to-b from-orange-600 to-amber-600 text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-4">
+               השקעה קטנה בעתיד גדול 💎
             </h2>
-            <p className="text-gray-500 mb-6">
-              פחות ממחיר של ארטיק, הרבה יותר ערך מחוג שלם.
+            <p className="text-lg text-orange-100 max-w-2xl mx-auto">
+               פחות מעלות של שוקולד, יותר מחוויית למידה שתישאר לכל החיים
             </p>
+          </div>
 
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <span className="text-3xl text-gray-400 line-through">₪29.00</span>
-              <span className="text-5xl md:text-6xl font-black text-orange-600">₪9.90</span>
+          <div className="max-w-lg mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border-2 border-white/20 shadow-2xl">
+              <div className="text-center mb-6">
+                 🌟 מבצע השקה
+              </div>
+
+              <div className="text-center mb-8">
+                <p className="text-xl font-bold mb-1">עלילה בלשית אחת</p>
+                <p className="text-orange-200">כולל ניסוי מדעי מלא</p>
+                 
+                <div className="mt-6">
+                  <span className="text-5xl md:text-6xl font-black">₪9.90</span>
+                  <p className="text-sm text-orange-200 mt-2">
+                     תשלום חד-פעמי • הורדה מיידית
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white/10 rounded-xl p-4 mb-8">
+                <p className="font-bold mb-3 text-center">
+                   מה תקבלו:
+                </p>
+                <ul className="space-y-2">
+                  {[
+                    'קובץ PDF איכותי ומעוצב',
+                    'עלילה בלשית מלאה ומרתקת',
+                    'ניסוי מדעי עם הוראות מפורטות',
+                    'רשימת חומרים מהמטבח',
+                    'הסברים מדעיים מותאמים לגיל',
+                    'הורדה מיידית לאחר התשלום'
+                  ].map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm">
+                      <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button onClick={() => alert('כאן יפתח חלון התשלום')}
+                className="w-full py-4 px-6 rounded-lg bg-white hover:bg-gray-100 text-primary font-heebo font-bold text-lg transition-colors shadow-lg flex items-center justify-center gap-2 group"
+              >
+                <Download className="w-5 h-5" />
+                 רכשו עכשיו והורידו מיד
+                <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+              </button>
+
+              <p className="text-center text-sm text-orange-200 mt-4">
+                 💳 תשלום מאובטח • קבלה מיידית למייל
+              </p>
             </div>
 
-            <button 
-              onClick={() => alert('כאן יפתח חלון התשלום')} 
-              className="w-full md:w-2/3 py-5 bg-gradient-to-l from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white text-xl font-bold rounded-xl shadow-lg transform transition hover:scale-105 flex items-center justify-center gap-3"
-            >
-              <Download size={24} />
-              אני רוצה להוריד את הקובץ
-            </button>
-            
-            <p className="text-sm text-gray-500 mt-4">
-              המחיר לזמן מוגבל • קבלה מיידית למייל • 100% אחריות להחזר כספי
-            </p>
-
-            {/* Guarantee Box */}
-            <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-center gap-3">
-              <Shield className="text-green-600" size={24} />
-              <span className="text-green-800 font-medium">
-                לא אהבתם? כספכם יוחזר במלואו, בלי שאלות.
-              </span>
+            {/* Money Back Guarantee */}
+            <div className="mt-8 bg-white/10 rounded-2xl p-6 text-center border border-white/20">
+              <span className="text-4xl block mb-3">🛡️</span>
+              <h3 className="font-bold text-lg mb-2">
+                 ערבות שביעות רצון מלאה
+              </h3>
+              <p className="text-orange-100 text-sm">
+                 לא מרוצים? נחזיר לכם כל אגורה תוך 7 ימים, ללא שאלות. 
+                 אנחנו בטוחים שהילדים שלכם יתאהבו!
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 8. FAQ & Footer - id="contact" */}
-      <section id="contact" className="py-16 bg-gray-900 text-white">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-2xl font-bold text-center mb-8">שאלות נפוצות</h2>
+      {/* FAQ - מחובר ל-id="contact" לצורך ניווט */}
+      <section id="contact" className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-black text-center text-gray-800 mb-12">
+             שאלות נפוצות ❓
+          </h2>
+           
           <div className="space-y-4">
-            <details className="bg-gray-800 p-4 rounded-lg cursor-pointer group">
-              <summary className="font-bold flex justify-between items-center">
-                האם צריך ציוד מיוחד לניסויים?
-                <ChevronLeft className="transition-transform group-open:-rotate-90" />
-              </summary>
-              <p className="text-gray-300 mt-3">ממש לא! כל הניסויים משתמשים בחומרים שיש בכל בית (חומץ, סודה לשתייה, שמן, צבעי מאכל וכו').</p>
-            </details>
-            <details className="bg-gray-800 p-4 rounded-lg cursor-pointer group">
-              <summary className="font-bold flex justify-between items-center">
-                לאיזה גילאים זה מתאים?
-                <ChevronLeft className="transition-transform group-open:-rotate-90" />
-              </summary>
-              <p className="text-gray-300 mt-3">יש לנו רמות שונות. התעלומה הנוכחית מתאימה במיוחד לגילאי 6-10 (עם עזרת הורים) או 10-12 באופן עצמאי.</p>
-            </details>
+            {[
+              {
+                q: "האם זה באמת מתאים לילד שלי?",
+                a: "בהחלט! העלילות מחולקות לרמות קושי שונות, מגיל 6 ועד למבוגרים. כל עלילה מותאמת לגיל הילד עם הוראות ברורות והסברים מתאימים."
+              },
+              {
+                q: "כמה זמן לוקח לבצע את הניסוי?",
+                a: "ניסוי ממוצע לוקח בין 20-45 דקות, תלוי ברמת הקושי ובגיל הילד. כל ההוראות ברורות וצעד אחר צעד."
+              },
+              {
+                q: "האם צריך חיבור לאינטרנט?",
+                a: "רק להורדת הקובץ בפעם הראשונה. אחרי שהורדתם את ה-PDF, אתם יכולים להשתמש בו בכל מקום וזמן - להדפיס או לקרוא ממסך, ללא צורך באינטרנט."
+              },
+              {
+                q: "איזה חומרים צריך לניסוי?",
+                a: "כל הניסויים משתמשים בחומרים פשוטים שיש כמעט בכל מטבח - מים, מלח, סוכר, חומץ, שמן וכו'. רשימה מפורטת מופיעה בכל עלילה."
+              },
+              {
+                q: "האם זה בטוח לילדים?",
+                a: "כל הניסויים תוכננו במיוחד לביצוע בטוח במטבח ביתי עם ילדים. אנו ממליצים על ליווי מבוגר, במיוחד בגילאים הצעירים. כל הוראות הבטיחות מפורטות במסמך."
+              },
+              {
+                q: "מה אעשה אם יש בעיה טכנית בהורדה?",
+                a: "אנחנו כאן לעזור! צרו איתנו קשר דרך המייל support@detective-onion.com ונפתור כל בעיה תוך 24 שעות."
+              }
+            ].map((faq, index) => (
+              <details key={index} className="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-5 font-bold text-gray-800 hover:bg-gray-100">
+                  {faq.q}
+                  <ChevronLeft className="w-5 h-5 text-gray-500 transition-transform group-open:-rotate-90" />
+                </summary>
+                <p className="px-5 pb-5 text-gray-600 leading-relaxed">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
           </div>
-          
-          <div className="text-center mt-12 pt-8 border-t border-gray-700 text-gray-400 text-sm">
-            © 2024 הבלש בצלי. כל הזכויות שמורות. <br />
-            נבנה באהבה למען דור העתיד.
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 md:py-20 bg-gradient-to-b from-amber-100 to-orange-100">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <div className="max-w-2xl mx-auto">
+            <span className="text-5xl block mb-6">🧅🔬</span>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-800 mb-4">
+               תנו לילדים שלכם את המתנה של חשיבה וגילוי
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+               הצטרפו למעלה מ-1,000 משפחות שגילו שלמידה יכולה להיות מהנה, משמעותית ומרתקת
+            </p>
+             
+            <div className="flex flex-col items-center gap-4">
+              <button onClick={scrollToProduct} className="group bg-gradient-to-l from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white text-lg font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-orange-500/40 transition-all transform hover:scale-105">
+                 רכשו עכשיו ב-₪9.90
+                <ChevronLeft className="inline-block w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+              </button>
+            </div>
+
+            <p className="text-sm text-gray-500 mt-6">
+               💾 הורדה מיידית • 🛡️ החזר כספי מלא תוך 7 ימים
+            </p>
           </div>
         </div>
       </section>
@@ -292,4 +478,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default ParentsLandingPage;
