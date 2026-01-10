@@ -1,3 +1,4 @@
+import Hero from '@/components/home/Hero';
 import AboutDetectiveOnion from '@/components/home/AboutDetectiveOnion';
 import HowItWorks from '@/components/home/HowItWorks';
 import MeetTheCast from '@/components/home/MeetTheCast';
@@ -7,6 +8,9 @@ import FinalCTA from '@/components/home/FinalCTA';
 const Index = () => {
   return (
     <main className="flex-1">
+      {/* Hero Section */}
+      <Hero />
+      
       {/* About Detective Onion - Hero Section with tabs */}
       <AboutDetectiveOnion />
       
