@@ -9,6 +9,7 @@ import { Footer } from "@/components/layout/Footer";
 import Index from "./pages/Index";
 import Cases from "./pages/Cases";
 import Shop from "./pages/Shop";
+import Equipment from "./pages/Equipment";
 import Parents from "./pages/Parents";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -28,6 +29,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/cases" element={<Cases />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/equipment" element={<Equipment />} />
               <Route path="/parents" element={<Parents />} />
               <Route path="/contact" element={<Contact />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
