@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { Footer } from "@/components/layout/Footer";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { useEffect } from "react";
 
 // ייבוא הדפים - Home הוא כעת דף הבית הראשי
@@ -49,6 +50,7 @@ function AppRoutes() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <MobileStickyCTA />
       </div>
     </>
   );
