@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
-import { Header } from "@/components/layout/Header";
+import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import Index from "./pages/Index";
 import Cases from "./pages/Cases";
@@ -23,7 +23,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <div className="min-h-screen flex flex-col">
-            <Header />
+            <Navbar />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/cases" element={<Cases />} />
