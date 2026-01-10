@@ -36,7 +36,7 @@ const Terms = () => {
               </p>
             </section>
 
-            {/* הסעיף הקריטי - מודגש */}
+            {/* הסעיף המודגש */}
             <section className="bg-destructive/5 border-2 border-destructive/20 rounded-xl p-6">
               <div className="flex items-start gap-3">
                 <ShieldAlert className="w-6 h-6 text-destructive shrink-0 mt-1" />
