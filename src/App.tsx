@@ -11,6 +11,7 @@ import Shop from "./pages/Shop";
 import Equipment from "./pages/Equipment";
 import Parents from "./pages/Parents";
 import Contact from "./pages/Contact";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 
@@ -40,6 +41,7 @@ function AppRoutes() {
           <Route path="/equipment" element={<Equipment />} />
           <Route path="/parents" element={<Parents />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
