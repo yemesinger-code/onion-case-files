@@ -1,139 +1,157 @@
+import Navbar from '@/components/Navbar';
+import { Footer } from '@/components/layout/Footer';
+import { Mail, Send, Bell, ShieldCheck, Lock } from 'lucide-react';
 import { useState } from 'react';
-import { useLanguage } from '@/i18n/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { EvidenceDropzone } from '@/components/contact/EvidenceDropzone';
-import { Send, CheckCircle2 } from 'lucide-react';
 
 const Contact = () => {
-  const { t } = useLanguage();
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSending(true);
-    
-    // Simulate sending
-    setTimeout(() => {
-      setSending(false);
-      setSent(true);
-    }, 1500);
+    setFormStatus('success');
+    // כאן תהיה הלוגיקה לשליחת הטופס
   };
 
   return (
-    <main className="flex-1 py-12 md:py-16">
-      <div className="container max-w-2xl">
-        {/* Header */}
-        <header className="text-center mb-12">
-          <div 
-            className="inline-block stamp text-sm mb-4"
-            style={{ '--stamp-rotation': '3deg' } as React.CSSProperties}
-          >
-            {t.common.confidential}
-          </div>
-          <h1 className="font-heebo font-black text-4xl md:text-5xl text-foreground mb-4">
-            {t.contact.title}
-          </h1>
-          <p className="font-heebo text-xl text-muted-foreground">
-            {t.contact.subtitle}
-          </p>
-        </header>
-
-        {sent ? (
-          <div className="bg-card border-2 border-accent rounded-xl p-12 shadow-folder paper-texture text-center animate-fade-in">
-            <CheckCircle2 className="w-20 h-20 mx-auto text-accent mb-6" />
-            <h2 className="font-heebo font-bold text-2xl text-foreground mb-2">
-              {t.contact.sent}
-            </h2>
-            <p className="text-muted-foreground">
-              {t.contact.fileReceived}
+    <div className="min-h-screen bg-background flex flex-col" dir="rtl">
+      <Navbar />
+      
+      <main className="flex-1 py-12 md:py-20">
+        <div className="container max-w-4xl px-4">
+          
+          {/* Header */}
+          <header className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <Lock className="w-4 h-4" /> ערוץ מוצפן
+            </span>
+            <h1 className="font-heebo font-black text-4xl md:text-5xl text-foreground mb-4">
+              קו מאובטח 🕵️‍♂️
+            </h1>
+            <p className="font-heebo text-lg text-muted-foreground max-w-xl mx-auto">
+              כאן יוצרים קשר עם מטה הסוכנות ונרשמים לקבלת עדכונים סודיים.
             </p>
+          </header>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            
+            {/* חלק א': רישום לעדכונים (ניוזלטר) */}
+            <section className="bg-card border-2 border-border rounded-2xl p-6 md:p-8 shadow-folder">
+              <div className="flex items-center justify-center w-14 h-14 bg-secondary/20 rounded-full mb-4">
+                <Bell className="w-7 h-7 text-secondary" />
+              </div>
+              <h2 className="font-heebo font-bold text-xl text-foreground mb-2">קבלת עדכונים מהשטח</h2>
+              <p className="text-muted-foreground text-sm mb-6">
+                היו הראשונים לדעת על תעלומות חדשות, מבצעים מיוחדים וטיפים לניסויים.
+              </p>
+              
+              <form className="space-y-4">
+                <div>
+                  <label htmlFor="newsletter-name" className="block text-sm font-medium text-foreground mb-1">שם מלא</label>
+                  <input 
+                    type="text" 
+                    id="newsletter-name"
+                    name="name"
+                    className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary focus:border-primary transition-colors" 
+                    required
+                    maxLength={100}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="newsletter-email" className="block text-sm font-medium text-foreground mb-1">כתובת מייל</label>
+                  <input 
+                    type="email" 
+                    id="newsletter-email"
+                    name="email"
+                    placeholder="your@email.com" 
+                    className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary focus:border-primary transition-colors" 
+                    required
+                    maxLength={255}
+                  />
+                </div>
+                
+                <div className="flex items-start gap-2">
+                  <input type="checkbox" id="consent" className="mt-1 rounded border-border" required />
+                  <label htmlFor="consent" className="text-xs text-muted-foreground">
+                    אני מאשר/ת קבלת עדכונים שיווקיים למייל.
+                  </label>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                >
+                  צרפו אותי לרשימה
+                </button>
+              </form>
+            </section>
+
+            {/* חלק ב': יצירת קשר עם המוכר */}
+            <section className="bg-card border-2 border-border rounded-2xl p-6 md:p-8 shadow-folder">
+              <div className="flex items-center justify-center w-14 h-14 bg-primary/20 rounded-full mb-4">
+                <Mail className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="font-heebo font-bold text-xl text-foreground mb-2">פנייה למטה (שירות לקוחות)</h2>
+              <p className="text-muted-foreground text-sm mb-6">
+                נתקלתם בבעיה בהורדה? יש לכם שאלה על אחד הניסויים? אנחנו כאן לעזור.
+              </p>
+
+              {formStatus === 'success' ? (
+                <div className="text-center py-8">
+                  <ShieldCheck className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="font-heebo font-bold text-xl text-foreground">המסר התקבל!</h3>
+                  <p className="text-muted-foreground">נחזור אליכם בהקדם האפשרי.</p>
+                  <button 
+                    onClick={() => setFormStatus('idle')} 
+                    className="text-sm text-primary underline mt-4 hover:text-primary/80 transition-colors"
+                  >
+                    שלח הודעה נוספת
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="contact-subject" className="block text-sm font-medium text-foreground mb-1">נושא הפנייה</label>
+                    <select 
+                      id="contact-subject"
+                      name="subject"
+                      className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                      required
+                    >
+                      <option value="download">בעיה בהורדת קובץ</option>
+                      <option value="product">שאלה על מוצר</option>
+                      <option value="business">שיתוף פעולה עסקי</option>
+                      <option value="other">אחר</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="contact-message" className="block text-sm font-medium text-foreground mb-1">הודעה</label>
+                    <textarea 
+                      id="contact-message"
+                      name="message"
+                      rows={4} 
+                      className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background resize-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                      required
+                      maxLength={1000}
+                    />
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                  >
+                    <Send className="w-4 h-4" />
+                    שליחת הודעה
+                  </button>
+                </form>
+              )}
+            </section>
+
           </div>
-        ) : (
-          <div className="space-y-8">
-            {/* Evidence Dropzone */}
-            <div>
-              <Label className="font-cousine text-sm uppercase tracking-wider text-muted-foreground mb-3 block">
-                {t.contact.subtitle}
-              </Label>
-              <EvidenceDropzone />
-            </div>
-
-            {/* Contact Form */}
-            <form 
-              onSubmit={handleSubmit} 
-              className="bg-card border-2 border-border rounded-xl p-6 md:p-8 shadow-folder paper-texture space-y-6"
-            >
-              <div className="space-y-2">
-                <Label 
-                  htmlFor="name" 
-                  className="font-cousine text-sm uppercase tracking-wider text-muted-foreground"
-                >
-                  {t.contact.name}
-                </Label>
-                <Input
-                  id="name"
-                  type="text"
-                  className="bg-background border-border"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label 
-                  htmlFor="email"
-                  className="font-cousine text-sm uppercase tracking-wider text-muted-foreground"
-                >
-                  {t.contact.email}
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  className="bg-background border-border"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label 
-                  htmlFor="message"
-                  className="font-cousine text-sm uppercase tracking-wider text-muted-foreground"
-                >
-                  {t.contact.message}
-                </Label>
-                <Textarea
-                  id="message"
-                  className="bg-background border-border min-h-[150px] resize-none"
-                  required
-                />
-              </div>
-
-              <Button 
-                type="submit" 
-                variant="detective" 
-                size="lg" 
-                className="w-full"
-                disabled={sending}
-              >
-                {sending ? (
-                  <>
-                    <span className="animate-pulse">{t.contact.sending}</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    {t.contact.send}
-                  </>
-                )}
-              </Button>
-            </form>
-          </div>
-        )}
-      </div>
-    </main>
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
   );
 };
 
