@@ -1,126 +1,132 @@
-import { useState } from 'react';
-import { useLanguage } from '@/i18n/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { CheckoutModal } from '@/components/shop/CheckoutModal';
-import { AlertTriangle, Check, Shield } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import { Footer } from '@/components/layout/Footer';
+import { ShoppingBag, Clock, Star, ShieldAlert, Download, Check } from 'lucide-react';
 
 const Shop = () => {
-  const { t, language } = useLanguage();
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const cases = [
+    {
+      id: "001",
+      title: "תעלומת העוגייה הנעלמת",
+      desc: "מי גנב את העוגייה מהצנצנת הסגורה? חקירה שמשלבת טביעות אצבע וכימיה של אבקות.",
+      difficulty: "מתחילים (גילאי 6-9)",
+      time: "45 דקות",
+      price: 9.90,
+      imageColor: "bg-orange-100",
+      icon: "🍪"
+    },
+    {
+      id: "002",
+      title: "השמרים שלא תפחו",
+      desc: "למה הפיצה של ברוך האופה נשארה שטוחה? חקירה ביולוגית מרתקת על יצורים מיקרוסקופיים.",
+      difficulty: "מתקדמים (גילאי 8-12)",
+      time: "60 דקות",
+      price: 9.90,
+      imageColor: "bg-blue-100",
+      icon: "🍕"
+    },
+    {
+      id: "003",
+      title: "תעלומת הלימונדה הסגולה",
+      desc: "איך המשקה שינה את צבעו לבד? ניסוי בחומצות ובסיסים שנראה כמו קסם אמיתי.",
+      difficulty: "לכל המשפחה",
+      time: "30 דקות",
+      price: 9.90,
+      imageColor: "bg-purple-100",
+      icon: "🍋"
+    }
+  ];
 
   return (
-    <main className="flex-1 py-12 md:py-16 pb-32 md:pb-16">
-      <div className="container max-w-4xl">
-        {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="font-heebo font-black text-4xl md:text-5xl text-foreground mb-4">
-            {t.shop.title}
-          </h1>
-          <p className="font-heebo text-xl text-muted-foreground">
-            {t.shop.subtitle}
-          </p>
-        </header>
+    <div className="min-h-screen bg-background flex flex-col" dir="rtl">
+      <Navbar />
+      
+      <main className="flex-1 py-12 md:py-20">
+        <div className="container max-w-6xl px-4">
+          
+          {/* Hero Section */}
+          <header className="text-center mb-12 md:mb-16">
+            <h1 className="font-heebo font-black text-4xl md:text-5xl text-foreground mb-4">
+              ארכיון התיקים 📂
+            </h1>
+            <p className="font-heebo text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              כאן תמצאו את כל תיקי החקירה הזמינים להורדה מיידית.
+              <br />
+              בחרו תעלומה, הורידו את הקובץ והפכו את המטבח למעבדה.
+            </p>
+          </header>
 
-        {/* Product Card */}
-        <div className="bg-card border-2 border-border rounded-2xl shadow-folder overflow-hidden paper-texture">
-          <div className="grid md:grid-cols-2 gap-0">
-            {/* Product Image */}
-            <div className="relative aspect-square bg-muted flex items-center justify-center p-8">
-              <div className="w-full h-full rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-2 border-dashed border-border">
-                <div className="text-center space-y-4">
-                  <div className="text-6xl md:text-8xl">🎒</div>
-                  <p className="font-cousine text-xs text-muted-foreground uppercase tracking-wider">
-                    {language === 'en' ? 'Detective Kit' : 'ערכת בלש'}
-                  </p>
+          {/* Products Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {cases.map((item) => (
+              <article 
+                key={item.id} 
+                className="bg-card border-2 border-border rounded-2xl shadow-folder overflow-hidden flex flex-col transition-transform hover:scale-[1.02] hover:shadow-xl"
+              >
+                {/* Product Image Placeholder */}
+                <div className={`${item.imageColor} aspect-[4/3] flex items-center justify-center relative`}>
+                  <span className="text-7xl md:text-8xl">
+                    {item.icon}
+                  </span>
+                  <span className="absolute top-3 right-3 bg-black/70 text-white text-xs font-cousine px-2 py-1 rounded">
+                    תיק #{item.id}
+                  </span>
                 </div>
-              </div>
-              {/* TOP SECRET stamp */}
-              <div 
-                className="absolute top-6 right-6 stamp text-xs shadow-stamp"
-                style={{ '--stamp-rotation': '-15deg' } as React.CSSProperties}
-              >
-                {t.common.topSecret}
-              </div>
-            </div>
 
-            {/* Product Info */}
-            <div className="p-8 flex flex-col">
-              <h2 className="font-heebo font-bold text-2xl md:text-3xl text-foreground mb-3">
-                {t.shop.productName}
-              </h2>
-              
-              <p className="text-muted-foreground mb-6">
-                {t.shop.productDesc}
-              </p>
+                <div className="p-5 md:p-6 flex flex-col flex-1">
+                  <header className="mb-2">
+                    <h2 className="font-heebo font-bold text-xl md:text-2xl text-foreground">
+                      {item.title}
+                    </h2>
+                  </header>
 
-              <p className="font-heebo font-black text-3xl text-secondary mb-6">
-                {t.shop.price}
-              </p>
+                  <p className="text-muted-foreground text-sm mb-4 flex-1">
+                    {item.desc}
+                  </p>
 
-              {/* What's included */}
-              <div className="mb-6">
-                <h3 className="font-cousine text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                  {t.shop.includes}
-                </h3>
-                <ul className="space-y-2">
-                  {t.shop.includesList.map((item, index) => (
-                    <li key={index} className="flex items-center gap-2 text-sm">
-                      <Check className="w-4 h-4 text-accent flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  {/* Meta Data */}
+                  <div className="flex flex-wrap gap-2 text-xs mb-4">
+                    <span className="bg-muted text-muted-foreground px-2 py-1 rounded-full flex items-center gap-1">
+                      <Star className="w-3 h-3" /> {item.difficulty}
+                    </span>
+                    <span className="bg-muted text-muted-foreground px-2 py-1 rounded-full flex items-center gap-1">
+                      <Clock className="w-3 h-3" /> {item.time}
+                    </span>
+                  </div>
 
-              {/* Parental Gate Warning */}
-              <div 
-                className="bg-destructive/10 border-2 border-destructive/30 rounded-lg p-4 mb-6"
-                role="alert"
-              >
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-6 h-6 text-destructive flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-heebo font-bold text-foreground">
-                      {t.shop.parentalGate.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {t.shop.parentalGate.message}
-                    </p>
+                  {/* Price & Action */}
+                  <div className="flex items-center justify-between pt-4 border-t border-border">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-muted-foreground text-sm line-through">₪29.00</span>
+                      <span className="font-heebo font-black text-2xl text-primary">₪{item.price.toFixed(2)}</span>
+                    </div>
+                    <button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-colors">
+                      <Download className="w-4 h-4" />
+                      רכישה והורדה
+                    </button>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-auto">
-                <Button 
-                  variant="detective" 
-                  size="xl" 
-                  className="w-full"
-                  onClick={() => setCheckoutOpen(true)}
-                >
-                  <Shield className="w-5 h-5" />
-                  {t.shop.buyButton}
-                </Button>
-              </div>
-            </div>
+              </article>
+            ))}
           </div>
+
+          {/* Legal Disclaimer Box - כפי שביקשת */}
+          <aside className="bg-muted/50 border border-border rounded-xl p-6 flex items-start gap-4 max-w-3xl mx-auto">
+            <ShieldAlert className="w-8 h-8 text-muted-foreground flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="font-heebo font-bold text-foreground mb-1">מדיניות רכישת מוצר דיגיטלי</h3>
+              <p className="text-muted-foreground text-sm">
+                שימו לב: רכישת מוצר דיגיטלי באתר זה הינה סופית. 
+                בהתאם לתקנות הגנת הצרכן, לא ניתן לבטל עסקה בגין רכישת מידע דיגיטלי או טובין הניתנים לשעתוק 
+                לאחר קבלת הגישה אליהם (שליחת הקובץ למייל).
+              </p>
+            </div>
+          </aside>
+
         </div>
-      </div>
+      </main>
 
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur border-t-2 border-border md:hidden z-40">
-        <Button 
-          variant="detective" 
-          size="xl" 
-          className="w-full"
-          onClick={() => setCheckoutOpen(true)}
-        >
-          <Shield className="w-5 h-5" />
-          {t.shop.buyButton} - {t.shop.price}
-        </Button>
-      </div>
-
-      <CheckoutModal open={checkoutOpen} onOpenChange={setCheckoutOpen} />
-    </main>
+      <Footer />
+    </div>
   );
 };
 
