@@ -1,53 +1,22 @@
-import { AlertCircle, Lightbulb, Smartphone, Brain, Clock, Sparkles } from 'lucide-react';
+import { Brain, Beaker, Heart, Check } from 'lucide-react';
 
-// Pain Points Section - "מכירים את זה?"
 export const PainPoints = () => {
-  const painPoints = [
-    {
-      icon: Smartphone,
-      title: "הילדים דבוקים למסכים",
-      description: "קשה למצוא פעילות שבאמת תופסת את תשומת הלב שלהם בלי טאבלט או טלוויזיה."
-    },
-    {
-      icon: Clock,
-      title: "אין זמן לארגן פעילויות",
-      description: "בין העבודה לחוגים, מי מספיק לתכנן פעילות איכותית?"
-    },
-    {
-      icon: Brain,
-      title: "רוצים שילמדו משהו אמיתי",
-      description: "לא סתם בידור - אלא משהו שיפתח להם את הראש ויעורר סקרנות."
-    }
-  ];
-
   return (
-    <section className="py-16 md:py-24 bg-muted/30" dir="rtl">
-      <div className="container max-w-5xl px-4">
-        <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-primary font-bold mb-4">
-            <AlertCircle className="w-5 h-5" />
-            מכירים את זה?
-          </span>
-          <h2 className="font-heebo font-black text-3xl md:text-4xl text-foreground">
-            האתגרים של הורים בעידן הדיגיטלי
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {painPoints.map((point, index) => (
-            <div 
-              key={index}
-              className="bg-card border-2 border-border rounded-2xl p-6 text-center shadow-folder"
-            >
-              <div className="w-14 h-14 bg-destructive/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <point.icon className="w-7 h-7 text-destructive" />
-              </div>
-              <h3 className="font-heebo font-bold text-lg text-foreground mb-2">
-                {point.title}
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                {point.description}
-              </p>
+    <section className="py-16 md:py-20 bg-muted/30" dir="rtl">
+      <div className="container max-w-4xl px-4">
+        <h2 className="font-heebo font-bold text-3xl md:text-4xl text-center text-foreground mb-12">
+           האם זה נשמע מוכר? 🤔
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {[
+            { icon: "📱", text: "הילדים דבוקים למסכים ללא תוכן משמעותי" },
+            { icon: "😴", text: "משעמם להם במהרה ממשחקים חוזרים" },
+            { icon: "🔬", text: "אתם מחפשים דרך מהנה ללמד מדע בבית" },
+            { icon: "🧠", text: "רוצים לפתח חשיבה לוגית ויצירתית" }
+          ].map((item, index) => (
+            <div key={index} className="flex items-start gap-4 bg-card border border-border rounded-lg p-6 shadow-sm">
+              <span className="text-4xl">{item.icon}</span>
+              <p className="font-heebo text-lg text-foreground pt-1">{item.text}</p>
             </div>
           ))}
         </div>
@@ -56,50 +25,68 @@ export const PainPoints = () => {
   );
 };
 
-// Solution Section - "הפתרון שלנו"
 export const Solution = () => {
-  const benefits = [
-    "פעילות ללא מסכים שהילדים באמת אוהבים",
-    "שילוב של סיפור מותח + ניסוי מדעי + אוכל טעים",
-    "הכל מוכן - רק צריך להוריד ולהדפיס",
-    "מתאים לגילאי 6-12, לבד או עם ההורים"
-  ];
-
   return (
-    <section className="py-16 md:py-24 bg-primary/5" dir="rtl">
-      <div className="container max-w-5xl px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          
-          <div>
-            <span className="inline-flex items-center gap-2 text-primary font-bold mb-4">
-              <Lightbulb className="w-5 h-5" />
-              הפתרון
-            </span>
-            <h2 className="font-heebo font-black text-3xl md:text-4xl text-foreground mb-6">
-              חקירה במטבח שמשלבת<br />
-              <span className="text-primary">מדע, סיפור ובישול</span>
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              תיקי החקירה של "הבלש בצלי" הופכים את המטבח למעבדה מדעית. 
-              הילדים פותרים תעלומה אמיתית באמצעות ניסוי מדעי - ובסוף גם אוכלים את הראיות!
-            </p>
-
-            <ul className="space-y-3">
-              {benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Sparkles className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                  <span className="text-foreground font-medium">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-card border-2 border-border rounded-2xl p-8 shadow-folder">
-            <div className="aspect-square bg-muted rounded-xl flex items-center justify-center">
-              <span className="text-8xl">🧅🔍</span>
-            </div>
-          </div>
-
+    <section className="py-16 md:py-20" dir="rtl">
+      <div className="container max-w-6xl px-4">
+        <div className="text-center mb-16">
+          <h2 className="font-heebo font-bold text-3xl md:text-4xl text-foreground mb-4">
+             הפתרון: חוויה בלשית-מדעית במטבח שלכם 🎯
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+             כל עלילה משלבת תעלומה מרתקת עם ניסוי מדעי מעשי.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: Brain,
+              color: "text-purple-500",
+              bgColor: "bg-purple-500/10",
+              title: "פיתוח חשיבה ביקורתית",
+              description: "ניתוח ראיות, זיהוי דפוסים והסקת מסקנות.",
+              benefits: ["חשיבה לוגית", "פתרון בעיות", "קבלת החלטות"]
+            },
+            {
+              icon: Beaker,
+              color: "text-blue-500",
+              bgColor: "bg-blue-500/10",
+              title: "למידה מדעית מעשית",
+              description: "ניסויים פשוטים ובטוחים שמלמדים עקרונות מדעיים.",
+              benefits: ["חקר מדעי", "התנסות מעשית", "הבנת תופעות"]
+            },
+            {
+              icon: Heart,
+              color: "text-red-500",
+              bgColor: "bg-red-500/10",
+              title: "זמן איכות משפחתי",
+              description: "פעילות משפחתית שמחברת את כל המשפחה.",
+              benefits: ["חוויה משותפת", "שיחה ודיון", "זיכרונות משפחתיים"]
+            }
+          ].map((benefit, index) => {
+            const Icon = benefit.icon;
+            return (
+              <div key={index} className="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-all">
+                <div className={`${benefit.bgColor} w-16 h-16 rounded-lg flex items-center justify-center mb-6`}>
+                  <Icon className={`w-8 h-8 ${benefit.color}`} />
+                </div>
+                <h3 className="font-heebo font-bold text-xl text-foreground mb-3">
+                  {benefit.title}
+                </h3>
+                <p className="font-heebo text-muted-foreground mb-4 leading-relaxed">
+                  {benefit.description}
+                </p>
+                <ul className="space-y-2">
+                  {benefit.benefits.map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-green-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
