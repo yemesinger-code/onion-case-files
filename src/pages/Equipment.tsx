@@ -1,5 +1,4 @@
 import Navbar from '@/components/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { ShoppingCart, Ruler, Shield, BadgeCheck, LucideIcon } from 'lucide-react';
 import { getPhysicalProducts } from '@/data/products';
 
@@ -10,7 +9,8 @@ const Equipment = () => {
     <div className="min-h-screen bg-background flex flex-col" dir="rtl">
       <Navbar />
       
-      <main className="flex-1 py-12 md:py-20">
+      {/* תיקון: pt-40 מונע חיתוך כותרת */}
+      <main className="flex-1 pt-40 pb-12 md:pb-20">
         <div className="container max-w-6xl px-4">
           
           {/* Hero Section */}
@@ -31,7 +31,6 @@ const Equipment = () => {
           {/* Equipment Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
             {items.map((item) => {
-              // טיפול באייקון (אם הוא רכיב ריאקט או מחרוזת)
               const IconComponent = item.icon as LucideIcon;
               const IconRender = typeof item.icon === 'string' 
                 ? <span className="text-7xl md:text-8xl">{item.icon}</span>
@@ -92,7 +91,7 @@ const Equipment = () => {
         </div>
       </main>
 
-      <Footer />
+      {/* Footer הוסר */}
     </div>
   );
 };
