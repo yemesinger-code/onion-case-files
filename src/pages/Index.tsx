@@ -9,26 +9,40 @@ import FinalCTA from '@/components/home/FinalCTA';
 const Index = () => {
   return (
     <main className="flex-1">
-      {/* 1. Hero: The Hook - רושם ראשוני חזק */}
-      <Hero />
-      
-      {/* 2. About: The Story - היכרות עם הדמות והקונספט */}
-      <AboutDetectiveOnion />
-      
-      {/* 3. Product: The Offer - הצעה לרכישה (מיקום אסטרטגי!) */}
-      <FeaturedProduct />
-      
-      {/* 4. How It Works: The Process - הסרת חסמים והסבר טכני */}
-      <HowItWorks />
-      
-      {/* 5. Cast: The Emotion - חיבור לדמויות המשנה */}
-      <MeetTheCast />
-      
-      {/* 6. Social Proof: The Trust - הוכחה חברתית */}
-      <SocialProof />
-      
-      {/* 7. Final CTA: The Closing - הזדמנות אחרונה לרכישה */}
-      <FinalCTA />
+      {/* מזהה: top - ראש הדף */}
+      <div id="top">
+        <Hero />
+      </div>
+
+      {/* מזהה: about - אודות הבלש */}
+      <div id="about">
+        <AboutDetectiveOnion />
+      </div>
+
+      {/* מזהה: products - החנות/תיקים */}
+      <div id="products">
+        <FeaturedProduct />
+      </div>
+
+      {/* מזהה: how-it-works - איך זה עובד */}
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
+
+      {/* מזהה: cast - הצוות */}
+      <div id="cast">
+        <MeetTheCast />
+      </div>
+
+      {/* מזהה: reviews - המלצות */}
+      <div id="reviews">
+        <SocialProof />
+      </div>
+
+      {/* מזהה: contact - יצירת קשר/סיום */}
+      <div id="contact">
+        <FinalCTA />
+      </div>
     </main>
   );
 };
