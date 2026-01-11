@@ -39,12 +39,21 @@ const Contact = () => {
                 <Bell className="w-7 h-7 text-secondary" />
               </div>
               <h2 className="font-heebo font-bold text-xl text-foreground mb-4">קבלת עדכונים מהשטח</h2>
-              <form className="space-y-4">
-                <input 
-                  type="email" 
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                  required
+             <form 
+  name="newsletter" 
+  method="POST" 
+  data-netlify="true" 
+  className="space-y-4"
+>
+  <input type="hidden" name="form-name" value="newsletter" />
+  
+  <input
+    type="email"
+    name="email"
+    placeholder="your@email.com"
+    className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary"
+    required
+  />
                 />
                 <button 
                   type="submit"
@@ -67,21 +76,48 @@ const Contact = () => {
                   <h3 className="font-heebo font-bold text-xl text-foreground">המסר התקבל!</h3>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <textarea 
-                    rows={4}
-                    placeholder="כתבו את ההודעה שלכם..."
-                    className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background resize-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                    required
-                  />
-                  <button 
-                    type="submit"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
-                  >
-                    <Send className="w-4 h-4" />
-                    שליחת הודעה
-                  </button>
-                </form>
+                <form 
+  name="contact" 
+  method="POST" 
+  data-netlify="true" 
+  className="space-y-4"
+>
+  <input type="hidden" name="form-name" value="contact" />
+
+  {/* הוספתי שדות שם ומייל - בלעדיהם לא תדע למי לחזור */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input
+      type="text"
+      name="name"
+      placeholder="שם מלא"
+      className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary"
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="אימייל לחזרה"
+      className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary"
+      required
+    />
+  </div>
+
+  <textarea
+    name="message" 
+    rows={4}
+    placeholder="...כתבו את ההודעה שלכם"
+    className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background resize-none focus:ring-2 focus:ring-primary"
+    required
+  />
+
+  <button
+    type="submit"
+    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+  >
+    <Send className="w-4 h-4" />
+    שליחת הודעה
+  </button>
+</form>
               )}
             </section>
 
