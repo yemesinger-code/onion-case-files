@@ -54,7 +54,6 @@ const Contact = () => {
     className="w-full px-4 py-2 border-2 border-border rounded-lg bg-background focus:ring-2 focus:ring-primary"
     required
   />
-                />
                 <button 
                   type="submit"
                   className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold py-3 px-6 rounded-lg transition-colors"
