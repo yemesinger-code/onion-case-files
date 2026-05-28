@@ -1,27 +1,153 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detective Onion | הבלש בצלי - Kitchen Science Mysteries for Kids</title>
-    <meta name="description" content="Join Detective Onion on exciting kitchen science adventures! Fun experiments and mysteries for curious young minds. הצטרפו לבלש בצלי להרפתקאות מדע במטבח!" />
-    <meta name="theme-color" content="#5c3d6e" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSpark Kids - The Onion Files</title>
+    <!-- Tailwind CSS for modern and fast styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Detective Onion | הבלש בצלי" />
-    <meta property="og:description" content="Kitchen science mysteries for curious young minds" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Paddle Intellectual Billing SDK Integration -->
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script type="text/javascript">
+        // Initialize Paddle with your environment. 
+        // Note: Replace with your live client token once the account goes live.
+        Paddle.Setup({ vendor: 123456 }); // Placeholder vendor ID used by Antigravity agent
+    </script>
     
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@DetectiveOnion" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
-    <!-- Accessibility -->
-    <meta name="color-scheme" content="light" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600 tracking-tight">MindSpark Kids</a>
+            <div class="space-x-6 text-sm font-medium">
+                <a href="#books" class="hover:text-indigo-600 transition">Our Books</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+                <a href="#legal" class="hover:text-indigo-600 transition">Legal & Compliance</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Where Detective Stories Meet Kitchen Science!</h1>
+            <p class="text-lg md:text-xl mb-8 text-indigo-100 max-w-2xl mx-auto">
+                Welcome to <span class="font-semibold text-white">The Onion Files</span>. Engaging mystery eBooks for kids in the US that spark curiosity through thrilling plots and safe, hands-on home experiments.
+            </p>
+            <a href="#books" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-8 py-3 rounded-full shadow-lg transition transform hover:scale-105 inline-block">Explore The Series</a>
+        </div>
+    </header>
+
+    <!-- Books Showcase Section -->
+    <section id="books" class="py-16 max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">The Onion Files Series</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Book 1 - Live with Paddle Checkout -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col justify-between p-6">
+                <div>
+                    <div class="bg-indigo-100 h-48 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-indigo-600 font-bold text-lg">[ Book Cover: Detective in the Kitchen ]</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-900">The Onion Files: Case #1</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Join the ultimate kitchen detective squad in <strong>Detective in the Kitchen</strong>. Solve the mystery using clues you can only find through safe and fun science experiments right on your kitchen counter!
+                    </p>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <span class="text-2xl font-extrabold text-indigo-600">$2.99 <span class="text-xs text-gray-400 font-normal">USD</span></span>
+                        
+                        <!-- Active Paddle Buy Button with your Product ID -->
+                        <a href="#!" class="paddle_button bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-xl transition shadow inline-block text-center" data-product="Pro_01kspr4a11819gcyjqp4rzt60j">
+                            Buy Now
+                        </a>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-2 text-center">Instant Digital Download (PDF/ePub)</p>
+                </div>
+            </div>
+
+            <!-- Book 2 / Future Release -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col justify-between p-6">
+                <div>
+                    <div class="bg-purple-100 h-48 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-purple-600 font-bold text-lg">[ Book Cover Placeholder ]</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-900">The Onion Files: Case #2</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        The mystery deepens with bigger clues and brand-new kitchen experiments. Perfect for young detectives who love science and adventure.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <span class="text-2xl font-extrabold text-purple-600">$2.99 <span class="text-xs text-gray-400 font-normal">USD</span></span>
+                        <button class="bg-gray-300 text-gray-600 font-semibold px-6 py-2 rounded-xl cursor-not-allowed" disabled>
+                            Coming Soon
+                        </button>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-2 text-center">Instant Digital Download (PDF/ePub)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-100 py-16 px-4">
+        <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+            <h2 class="text-2xl font-bold text-center mb-2">Contact Us</h2>
+            <p class="text-gray-500 text-center text-sm mb-6">Have questions? We are here to help!</p>
+            
+            <div class="text-center py-4 bg-gray-50 rounded-xl border border-gray-100">
+                <p class="text-sm text-gray-600">For support, inquiries, or assistance:</p>
+                <a href="mailto:mindsparkids@gmail.com" class="text-lg font-semibold text-indigo-600 underline block mt-2">mindsparkids@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal & Compliance Section (Crucial for Paddle Approval) -->
+    <footer id="legal" class="bg-gray-900 text-gray-400 py-12 px-4 text-xs">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 border-b border-gray-800 pb-8 mb-8">
+            
+            <!-- Privacy Policy -->
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Privacy Policy</h4>
+                <p class="leading-relaxed">
+                    At MindSpark Kids, we respect your privacy and comply with COPPA regulations. We do not knowingly collect personal data from children under 13. Any data collected during purchase (via Paddle) is strictly used for order fulfillment and customer support. We never sell or share your data with third parties.
+                </p>
+            </div>
+
+            <!-- Terms of Service -->
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Terms of Service</h4>
+                <p class="leading-relaxed">
+                    By purchasing our digital products, you are granted a non-exclusive, non-transferable license for personal, educational, and household use only. Redistribution, reselling, or commercial use of "The Onion Files" materials without explicit written consent is strictly prohibited.
+                </p>
+            </div>
+
+            <!-- Refund Policy -->
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Refund Policy</h4>
+                <p class="leading-relaxed">
+                    Due to the nature of digital products, all sales of eBooks and digital downloads are final once the download link is generated. However, if you experience any technical difficulties opening or accessing the files, please contact us at mindsparkids@gmail.com, and we will ensure you receive full support.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+            <div>
+                <p class="font-semibold text-white">MindSpark Kids</p>
+                <p class="mt-1">Contact: mindsparkids@gmail.com | Tel Aviv, Israel</p>
+            </div>
+            <p>&copy; 2026 MindSpark Kids. All rights reserved. Powered by Paddle as our Merchant of Record.</p>
+        </div>
+    </footer>
+
+</body>
 </html>
