@@ -3,28 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindSpark Kids - The Onion Files</title>
-    <!-- Tailwind CSS for modern and fast styling -->
+    <title>Agent Peel - The Onion Files</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <!-- Paddle Intellectual Billing SDK Integration -->
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
     <script type="text/javascript">
-        // Initialize Paddle with your environment. 
-        // Note: Replace with your live client token once the account goes live.
-        Paddle.Setup({ vendor: 123456 }); // Placeholder vendor ID used by Antigravity agent
+        Paddle.Setup({ vendor: 123456 }); // Placeholder vendor ID
     </script>
     
     <style>
         html { scroll-behavior: smooth; }
+        /* Prevent scrolling when cookie modal is active */
+        .modal-active { overflow: hidden; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans modal-active">
 
-    <!-- Navigation -->
+    <div id="cookieModal" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-gray-100 text-center transform transition-all scale-100">
+            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">This website uses cookies</h3>
+            <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.
+            </p>
+            <button id="acceptCookies" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition shadow-lg hover:shadow-indigo-200">
+                Accept & Enter Site
+            </button>
+        </div>
+    </div>
+
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-indigo-600 tracking-tight">MindSpark Kids</a>
+            <a href="#" class="text-2xl font-bold text-indigo-600 tracking-tight">Agent Peel</a>
             <div class="space-x-6 text-sm font-medium">
                 <a href="#books" class="hover:text-indigo-600 transition">Our Books</a>
                 <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
@@ -33,7 +47,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20 px-4 text-center">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Where Detective Stories Meet Kitchen Science!</h1>
@@ -44,12 +57,10 @@
         </div>
     </header>
 
-    <!-- Books Showcase Section -->
     <section id="books" class="py-16 max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">The Onion Files Series</h2>
         
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <!-- Book 1 - Live with Paddle Checkout -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col justify-between p-6">
                 <div>
                     <div class="bg-indigo-100 h-48 rounded-xl flex items-center justify-center mb-6">
@@ -64,7 +75,6 @@
                     <div class="flex justify-between items-center pt-4 border-t border-gray-100">
                         <span class="text-2xl font-extrabold text-indigo-600">$2.99 <span class="text-xs text-gray-400 font-normal">USD</span></span>
                         
-                        <!-- Active Paddle Buy Button with your Product ID -->
                         <a href="#!" class="paddle_button bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-xl transition shadow inline-block text-center" data-product="Pro_01kspr4a11819gcyjqp4rzt60j">
                             Buy Now
                         </a>
@@ -73,7 +83,6 @@
                 </div>
             </div>
 
-            <!-- Book 2 / Future Release -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col justify-between p-6">
                 <div>
                     <div class="bg-purple-100 h-48 rounded-xl flex items-center justify-center mb-6">
@@ -97,7 +106,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="bg-gray-100 py-16 px-4">
         <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
             <h2 class="text-2xl font-bold text-center mb-2">Contact Us</h2>
@@ -110,19 +118,16 @@
         </div>
     </section>
 
-    <!-- Legal & Compliance Section (Crucial for Paddle Approval) -->
     <footer id="legal" class="bg-gray-900 text-gray-400 py-12 px-4 text-xs">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 border-b border-gray-800 pb-8 mb-8">
             
-            <!-- Privacy Policy -->
             <div>
                 <h4 class="text-sm font-bold text-white mb-3">Privacy Policy</h4>
                 <p class="leading-relaxed">
-                    At MindSpark Kids, we respect your privacy and comply with COPPA regulations. We do not knowingly collect personal data from children under 13. Any data collected during purchase (via Paddle) is strictly used for order fulfillment and customer support. We never sell or share your data with third parties.
+                    At Agent Peel, we respect your privacy and comply with COPPA regulations. We do not knowingly collect personal data from children under 13. Any data collected during purchase (via Paddle) is strictly used for order fulfillment and customer support. We never sell or share your data with third parties.
                 </p>
             </div>
 
-            <!-- Terms of Service -->
             <div>
                 <h4 class="text-sm font-bold text-white mb-3">Terms of Service</h4>
                 <p class="leading-relaxed">
@@ -130,7 +135,6 @@
                 </p>
             </div>
 
-            <!-- Refund Policy -->
             <div>
                 <h4 class="text-sm font-bold text-white mb-3">Refund Policy</h4>
                 <p class="leading-relaxed">
@@ -142,12 +146,35 @@
 
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
             <div>
-                <p class="font-semibold text-white">MindSpark Kids</p>
+                <p class="font-semibold text-white">Agent Peel</p>
                 <p class="mt-1">Contact: mindsparkids@gmail.com | Tel Aviv, Israel</p>
             </div>
-            <p>&copy; 2026 MindSpark Kids. All rights reserved. Powered by Paddle as our Merchant of Record.</p>
+            <p>&copy; 2026 Agent Peel. All rights reserved. Powered by Paddle as our Merchant of Record.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("cookieModal");
+            const acceptBtn = document.getElementById("acceptCookies");
+            
+            // Check if user already accepted cookies in the past
+            if (localStorage.getItem("cookiesAccepted") === "true") {
+                modal.style.display = "none";
+                document.body.classList.remove("modal-active");
+            }
+
+            // Close modal and unlock site on click
+            acceptBtn.addEventListener("click", function() {
+                localStorage.setItem("cookiesAccepted", "true");
+                modal.style.opacity = "0";
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    document.body.classList.remove("modal-active");
+                }, 300); // Smooth transition fade out
+            });
+        });
+    </script>
 
 </body>
 </html>
