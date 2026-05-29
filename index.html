@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Peel - Mystery Science Books for Kids</title>
-    <!-- Tailwind CSS v4 -->
+    <title>Agent Peel - The Complete Mystery Science Series</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Paddle Setup -->
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
     <script type="text/javascript">
-        Paddle.Setup({ vendor: 123456 }); // Placeholder Vendor ID
+        Paddle.Setup({ vendor: 123456 }); // Placeholder Vendor ID - Replace with your live vendor ID when approved
     </script>
     <style>
         html { scroll-behavior: smooth; }
@@ -21,9 +19,8 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans modal-active">
 
-    <!-- Cookie Consent Modal -->
     <div id="cookieModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-[100] p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border border-slate-100 text-center transform transition-all">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border border-slate-100 text-center">
             <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
@@ -33,149 +30,272 @@
             <p class="text-sm text-slate-600 mb-6 leading-relaxed">
                 We use cookies to optimize your experience, analyze web traffic, and ensure secure payments through Paddle. By entering, you agree to our privacy policy.
             </p>
-            <button id="acceptCookies" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-100 hover:shadow-none">
-                Accept & Explore
+            <button id="acceptCookies" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-100">
+                Accept & Explore Series
             </button>
         </div>
     </div>
 
-    <!-- Smart Header / Navigation -->
     <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent tracking-tight">AGENT PEEL</a>
             <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
                 <a href="#concept" class="hover:text-indigo-600 transition">The Concept</a>
-                <a href="#books" class="hover:text-indigo-600 transition">The Books</a>
+                <a href="#books" class="hover:text-indigo-600 transition">The 10 Cases</a>
                 <a href="#faq" class="hover:text-indigo-600 transition">FAQ</a>
                 <a href="#contact" class="hover:text-indigo-600 transition">Support</a>
             </div>
-            <a href="#books" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-bold px-5 py-2 rounded-xl text-sm transition">Shop Now</a>
+            <a href="#books" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2 rounded-xl text-sm transition shadow-md shadow-indigo-100">View Catalog</a>
         </div>
     </nav>
 
-    <!-- Premium Hero Section -->
     <header class="relative overflow-hidden bg-slate-950 text-white py-24 px-6 border-b border-slate-900">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.15),transparent_50%)]"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 mb-6 border border-indigo-500/20">
-                🚀 Sparking Curiosity in Young Minds
-            </span>
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
-                Where Thrilling Detective Stories <br><span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Meet Real Kitchen Science</span>
-            </h1>
-            <p class="text-lg md:text-xl mb-10 text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
-                Welcome to <span class="text-white font-semibold">The Onion Files</span>. Immersive mystery eBooks crafted for curious kids in the US. Solve edge-of-your-seat plots using safe, hands-on experiments right on your kitchen counter!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#books" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/20 transition transform hover:-translate-y-0.5 inline-block">
-                    Buy Case #1 ($2.99)
-                </a>
-                <a href="#concept" class="w-full sm:w-auto text-slate-300 hover:text-white font-semibold px-6 py-3 transition">
-                    How it works &rarr;
-                </a>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-left">
+                <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 mb-6 border border-indigo-500/20">
+                    🔬 High-Value Educational Entertainment
+                </span>
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-6 leading-tight">
+                    Turn Your Kitchen <br>Into a <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Crime Science Lab</span>
+                </h1>
+                <p class="text-lg text-slate-400 mb-8 font-medium leading-relaxed">
+                    10 gripping mystery eBooks written in American English for children aged 8-12. Young sleuths help Agent Peel crack cases by conducting real, safe science experiments using everyday kitchen items.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                    <a href="#books" class="w-full sm:w-auto text-center bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/20 transition transform hover:-translate-y-0.5">
+                        Explore the 10 Books
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block relative">
+                <img src="images/file_1.webp" alt="Agent Peel Detective" class="rounded-3xl shadow-2xl border border-slate-800 transform rotate-1 hover:rotate-0 transition duration-500 object-cover h-96 w-full">
+                <div class="absolute -bottom-4 -left-4 bg-slate-900/90 border border-slate-800 p-4 rounded-2xl backdrop-blur-sm shadow-xl">
+                    <p class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Active Investigation</p>
+                    <p class="text-sm font-semibold text-white mt-0.5">10 Case Files Ready to Solve</p>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Marketing / Value Proposition Section -->
     <section id="concept" class="py-20 max-w-6xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Why Parents & Kids Love The Series</h2>
-            <p class="text-slate-600 font-medium">We bridge the gap between passive screen time and active, educational learning.</p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">How Agent Peel Works</h2>
+            <p class="text-slate-600 font-medium">An innovative learning loop that builds real critical thinking and scientific inquiry.</p>
         </div>
-
         <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 font-bold text-xl">🕵️‍♂️</div>
-                <h3 class="text-lg font-bold text-slate-900 mb-2">Gripping Narrative</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Kids follow Agent Peel into intricate mysteries that keep them turning pages, building critical reading and logical thinking skills.</p>
+            <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+                <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 text-xl">📖</div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">1. Read the Clues</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">The story halts at a critical juncture. To find the suspect, a hidden code or substance must be scientifically analyzed.</p>
             </div>
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 font-bold text-xl">🧪</div>
-                <h3 class="text-lg font-bold text-slate-900 mb-2">100% Safe Experiments</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Every scientific clue is uncovered using standard, everyday kitchen ingredients. No specialized equipment or dangerous chemicals required.</p>
+            <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 text-xl">🧪</div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">2. Conduct the Experiment</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Using standard kitchen items (vinegar, baking soda, red cabbage), kids run a safe experiment to generate real-world data.</p>
             </div>
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 font-bold text-xl">📱</div>
-                <h3 class="text-lg font-bold text-slate-900 mb-2">Instant Access</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Get interactive PDF and ePub formats immediately upon checkout. Perfect for reading on iPads, tablets, Kindles, or laptops.</p>
+            <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 text-xl">🔓</div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">3. Solve the Mystery</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">The outcome of the experiment reveals the scientific culprit, allowing Agent Peel to close the case file successfully!</p>
             </div>
         </div>
     </section>
 
-    <!-- Modern Books Catalog Section -->
     <section id="books" class="py-20 bg-slate-100 border-y border-slate-200 px-6">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Choose Your Next Adventure</h2>
-                <p class="text-slate-600 font-medium">Safe checkout via Paddle. Instant digital delivery worldwide.</p>
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">The Complete 10-Case Collection</h2>
+                <p class="text-slate-600 font-medium">Browse individual cases. Filter by availability below.</p>
+                
+                <div class="flex justify-center gap-4 mt-8">
+                    <button onclick="filterCatalog('all')" id="filter-all" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-indigo-600 text-white shadow-md transition">All Cases (10)</button>
+                    <button onclick="filterCatalog('available')" id="filter-available" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">Available Now</button>
+                    <button onclick="filterCatalog('upcoming')" id="filter-upcoming" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">Upcoming Release</button>
+                </div>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Book 1 (Active) -->
-                <div class="bg-white rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/60 overflow-hidden flex flex-col justify-between p-8 transition duration-300">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="book-card available bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between p-5 transition hover:shadow-lg">
                     <div>
-                        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 h-56 rounded-2xl flex flex-col items-center justify-center mb-6 text-white p-6 shadow-inner relative">
-                            <span class="absolute top-4 left-4 bg-yellow-400 text-slate-900 text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">Available Now</span>
-                            <h4 class="text-2xl font-black tracking-tight text-center">THE ONION FILES</h4>
-                            <p class="text-xs text-indigo-200 font-bold mt-1 uppercase tracking-widest">Case #1: Detective in the Kitchen</p>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_1.webp" alt="Detective in the Kitchen" class="w-full h-full object-cover opacity-85">
+                            <span class="absolute top-3 left-3 bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Instant Access</span>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Case #1: Detective in the Kitchen</h3>
-                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
-                            The inaugural case file! Young sleuths must help Agent Peel cracks a complex mystery using hidden codes, scientific observation, and simple kitchen chemistry experiments.
-                        </p>
+                        <h4 class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Case File #01</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Detective in the Kitchen</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A critical ingredient goes missing right before the town bake-off. Help Agent Peel solve the theft using chemical reaction testing.</p>
+                        <div class="bg-indigo-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-indigo-950 font-medium">🧪 <strong>Kitchen Science:</strong> Baking soda vs. baking powder acid-base indicators.</p></div>
                     </div>
-                    <div>
-                        <div class="flex justify-between items-center pt-6 border-t border-slate-100">
-                            <div class="flex flex-col">
-                                <span class="text-3xl font-black text-indigo-600">$2.99</span>
-                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">One-Time Purchase</span>
-                            </div>
-                            <a href="#!" class="paddle_button bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-7 py-3 rounded-xl transition shadow-lg shadow-indigo-100 hover:shadow-none" data-product="Pro_01kspr4a11819gcyjqp4rzt60j">
-                                Buy eBook
-                            </a>
-                        </div>
-                        <p class="text-[11px] text-slate-400 mt-3 text-center">Format: Premium Interactive PDF / ePub</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-xl font-black text-slate-900">$2.99</span>
+                        <a href="#!" class="paddle_button bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition" data-product="Pro_01kspr4a11819gcyjqp4rzt60j">Buy eBook</a>
                     </div>
                 </div>
 
-                <!-- Book 2 (Coming Soon) -->
-                <div class="bg-white/60 rounded-3xl border border-slate-200/40 overflow-hidden flex flex-col justify-between p-8 opacity-75">
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
                     <div>
-                        <div class="bg-slate-200 h-56 rounded-2xl flex flex-col items-center justify-center mb-6 text-slate-500 p-6 relative">
-                            <span class="absolute top-4 left-4 bg-slate-400 text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">In Development</span>
-                            <h4 class="text-2xl font-black tracking-tight text-center text-slate-400">THE ONION FILES</h4>
-                            <p class="text-xs text-slate-400 font-bold mt-1 uppercase tracking-widest">Case #2: Coming Soon</p>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_2.webp" alt="The Hidden Invisible Message" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-400">Case #2: The Science Lab Secret</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">
-                            The mystery deepens with bigger plot twists, a brand-new setting, and completely new experiments that dive into the wonders of physics and biology.
-                        </p>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #02</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Invisible Threat</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">An anonymous secret message arrives warning of a prank at the museum. Decipher the note before time runs out!</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Thermal and chemical oxidation using lemon juice.</p></div>
                     </div>
-                    <div>
-                        <div class="flex justify-between items-center pt-6 border-t border-slate-100">
-                            <div class="flex flex-col">
-                                <span class="text-3xl font-black text-slate-400">$2.99</span>
-                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">🔒 Locked</span>
-                            </div>
-                            <button class="bg-slate-200 text-slate-400 font-bold px-7 py-3 rounded-xl cursor-not-allowed" disabled>
-                                Coming Soon
-                            </button>
-                        </div>
-                        <p class="text-[11px] text-slate-400 mt-3 text-center">Format: Digital Download (PDF/ePub)</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
                     </div>
                 </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_3.webp" alt="The Ink Chromatography Clue" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #03</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Pen-Testing Puzzle</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A threatening note is found on the teacher's desk. Analyze ink pigments from 4 different pens to trace the author.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Paper chromatography separating ink molecules.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_4.webp" alt="The Missing Density Layer" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #04</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Great Fluid Heist</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A high-value liquid cosmetic formula is mixed up with water. Restore the layered formula and calculate its mass.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Density columns using oil, water, and honey.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_5.webp" alt="Ice Melting Investigation" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #05</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Cold Case Breakdown</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A critical sculpture frozen in ice must be safely thawed without shattering the clue trapped inside.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Freezing point depression using salt variations.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_6.webp" alt="Magnetic Iron Clues" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #06</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Cereal Mystery</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A hidden safe key fell inside a bulk production bin. Isolate iron particles to pull out the key magnetically.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Magnetic iron extraction from cereal.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_7.webp" alt="Starch Detection Testing" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #07</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Forged Certificate</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A certificate of excellence was forged on low-quality paper. Detect starch levels to prove the fake.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Iodine starch reactions on varied paper types.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_8.webp" alt="Egg Shell Membrane Science" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #08</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Fragile Delivery</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A critical artifact must be transported inside a custom shell that can bounce but not break.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Decalcification of eggshells using vinegar.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_9.webp" alt="Bending Light Water Prisms" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #09</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Laser Prism Vault</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">A laser beam security route is misplaced. Construct a water-bending light mechanism to realign it.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Total internal reflection using water streams.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
+                <div class="book-card upcoming bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-5 opacity-85 hover:opacity-100 transition">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 h-48 bg-slate-900">
+                            <img src="images/file_10.webp" alt="Liquid Capillary Action Mystery" class="w-full h-full object-cover opacity-75">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow">Coming Soon</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Case File #10</h4>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">The Final Secret Link</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">The ultimate villain leaves a dry paper trace. Bridge liquid colors without touching them to find the clue.</p>
+                        <div class="bg-purple-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-purple-950 font-medium">🧪 <strong>Kitchen Science:</strong> Capillary action and liquid absorption tracking.</p></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <span class="text-sm font-bold text-slate-400">Locked</span>
+                        <button class="bg-slate-100 text-slate-400 text-xs font-bold px-4 py-2 rounded-lg cursor-not-allowed" disabled>Pre-order</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Interactive FAQ Section -->
     <section id="faq" class="py-20 max-w-4xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-3">Frequently Asked Questions</h2>
             <p class="text-slate-600 font-medium">Everything you need to know about Agent Peel books.</p>
         </div>
-
         <div class="space-y-4">
             <div class="faq-item bg-white border border-slate-200 rounded-2xl transition">
                 <button class="w-full text-left px-6 py-5 font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
@@ -184,26 +304,16 @@
                 </button>
                 <div class="faq-answer px-6 text-slate-600 text-sm leading-relaxed"><p class="pb-5">The series is perfectly curated for kids aged 8 to 12 who love solving mysteries, reading adventurous stories, and experimenting with basic science.</p></div>
             </div>
-
             <div class="faq-item bg-white border border-slate-200 rounded-2xl transition">
                 <button class="w-full text-left px-6 py-5 font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
                     <span>Are the kitchen experiments safe for children?</span>
                     <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="faq-answer px-6 text-slate-600 text-sm leading-relaxed"><p class="pb-5">Yes, 100%. All experiments are strictly designed around everyday non-toxic kitchen household items (like baking soda, lemon juice, or water). However, parental supervision is always recommended to maximize the shared fun!</p></div>
-            </div>
-
-            <div class="faq-item bg-white border border-slate-200 rounded-2xl transition">
-                <button class="w-full text-left px-6 py-5 font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                    <span>How do I receive the books after purchasing?</span>
-                    <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="faq-answer px-6 text-slate-600 text-sm leading-relaxed"><p class="pb-5">Once checkout is completed through our secure merchant partner, Paddle, you will instantly receive an email containing direct download links for both the PDF and ePub editions.</p></div>
+                <div class="faq-answer px-6 text-slate-600 text-sm leading-relaxed"><p class="pb-5">Yes, 100%. All experiments are strictly designed around everyday non-toxic kitchen household items (vinegar, baking soda, etc.). However, parental supervision is always recommended.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Modern Dynamic Contact Section -->
     <section id="contact" class="bg-slate-900 text-white py-20 px-6 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.1),transparent_40%)]"></div>
         <div class="max-w-md mx-auto bg-slate-950 p-8 rounded-3xl shadow-2xl border border-slate-800/80 relative z-10">
@@ -218,26 +328,21 @@
                 <div>
                     <label for="formSubject" class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Subject</label>
                     <input type="text" id="formSubject" name="subject_topic" required 
-                           class="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition text-white">
+                           class="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 text-white text-sm transition">
                 </div>
-
                 <div>
                     <label for="formMessage" class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Message Body</label>
                     <textarea id="formMessage" name="message" rows="4" required 
-                              class="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition text-white resize-none"></textarea>
+                              class="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 text-white text-sm transition resize-none"></textarea>
                 </div>
-
-                <button type="submit" id="submitBtn" 
-                        class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl transition shadow-xl shadow-indigo-600/10 hover:shadow-none flex items-center justify-center text-sm">
+                <button type="submit" id="submitBtn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl transition shadow-xl text-sm">
                     Send Message
                 </button>
             </form>
 
             <div id="successMessage" class="hidden text-center py-6">
                 <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-emerald-500/20">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                 </div>
                 <h3 class="text-xl font-bold text-white mb-1.5">Message Sent!</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">Your request has been sent successfully. We will review it and get back to you as soon as possible.</p>
@@ -245,29 +350,21 @@
         </div>
     </section>
 
-    <!-- Comprehensive Legal & Compliance Footer -->
     <footer id="legal" class="bg-slate-950 text-slate-500 py-16 px-6 text-xs border-t border-slate-900">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 pb-12 border-b border-slate-900 mb-10">
             <div>
                 <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider">Privacy Policy</h4>
-                <p class="leading-relaxed text-slate-400">
-                    At Agent Peel, we respect your family's privacy and comply strictly with COPPA regulations. We do not knowingly collect personal data from children under 13. Any details processed during transactions (managed securely via Paddle) are utilized solely for digital order fulfillment and customer support.
-                </p>
+                <p class="leading-relaxed text-slate-400">At Agent Peel, we respect your family's privacy and comply strictly with COPPA regulations. Any details processed during transactions (managed securely via Paddle) are utilized solely for digital order fulfillment and customer support.</p>
             </div>
             <div>
                 <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider">Terms of Service</h4>
-                <p class="leading-relaxed text-slate-400">
-                    By purchasing our digital products, you are granted a single, non-exclusive, non-transferable license for household and educational use. Unauthorized redistribution, reselling, or digital file sharing of "The Onion Files" content is legally prohibited without written authorization.
-                </p>
+                <p class="leading-relaxed text-slate-400">By purchasing our digital products, you are granted a single, non-exclusive, non-transferable license for household and educational use. Unauthorized redistribution or digital file sharing is legally prohibited.</p>
             </div>
             <div>
                 <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider">Refund Policy</h4>
-                <p class="leading-relaxed text-slate-400">
-                    Due to the instant nature of digital downloads, all eBook sales are final once the fulfillment email is dispatched. If you run into technical issues opening or rendering the PDF/ePub files on your device, contact us at mindsparkids@gmail.com for immediate technical assistance.
-                </p>
+                <p class="leading-relaxed text-slate-400">Due to the instant nature of digital downloads, all eBook sales are final once the fulfillment email is dispatched. If you run into technical issues opening the files, contact us at mindsparkids@gmail.com for technical assistance.</p>
             </div>
         </div>
-
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <div>
                 <p class="font-bold text-slate-300 text-sm tracking-tight">AGENT PEEL</p>
@@ -277,32 +374,48 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/972522997731?text=Hi!%20I%20have%20a%20question%20about%20Agent%20Peel%20books." 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 z-[99] flex items-center justify-center group"
-       aria-label="Contact us on WhatsApp">
+       target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 z-[99] flex items-center justify-center group">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-6 h-6 fill-current"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-        <span class="absolute right-16 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">Chat with us</span>
+        <span class="absolute right-16 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md">Chat with us</span>
     </a>
 
-    <!-- Core Interactive Logic -->
     <script>
-        // Interactive FAQ Accordion Trigger
+        // Advanced Client-Side Catalog Filter System
+        function filterCatalog(category) {
+            const cards = document.querySelectorAll('.book-card');
+            
+            // Adjust active state on buttons
+            document.querySelectorAll('#books button').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white shadow-md');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+            const activeBtn = document.getElementById(`filter-${category}`);
+            activeBtn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+
+            // Render cards selectively
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    if (card.classList.contains(category)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
         function toggleFaq(button) {
             const item = button.parentElement;
             const isActive = item.classList.contains('faq-active');
-            
             document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('faq-active'));
-            
-            if (!isActive) {
-                item.classList.add('faq-active');
-            }
+            if (!isActive) item.classList.add('faq-active');
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            // Cookie Modal Session State Control
             const modal = document.getElementById("cookieModal");
             const acceptBtn = document.getElementById("acceptCookies");
             
@@ -320,7 +433,7 @@
                 }, 300);
             });
 
-            // Contact Form AJAX Web3Forms Processor
+            // Contact Form Processor
             document.getElementById("contactForm").addEventListener("submit", function(e) {
                 e.preventDefault();
                 const form = e.target;
@@ -330,30 +443,21 @@
                 submitBtn.disabled = true;
                 submitBtn.innerText = "Sending...";
 
-                const formData = new FormData(form);
-                const object = Object.fromEntries(formData);
-                const json = JSON.stringify(object);
-
                 fetch("https://api.web3forms.com/submit", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: json
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(Object.fromEntries(new FormData(form)))
                 })
                 .then(async (response) => {
                     if (response.status == 200) {
                         form.classList.add("hidden");
                         successMessage.classList.remove("hidden");
                     } else {
-                        alert("Inquiry dispatch failed. Please try again or reach out to mindsparkids@gmail.com directly.");
+                        alert("Submission failed. Email mindsparkids@gmail.com directly.");
                         submitBtn.disabled = false;
                         submitBtn.innerText = "Send Message";
                     }
-                })
-                .catch(error => {
-                    alert("Network error encountered. Please check your connection.");
+                }).catch(() => {
                     submitBtn.disabled = false;
                     submitBtn.innerText = "Send Message";
                 });
