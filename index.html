@@ -3,214 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Peel - The Onion Files</title>
+    <title>Agent Peel - Mystery Science Books for Kids</title>
+    <!-- Tailwind CSS v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+    <!-- Paddle Setup -->
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
     <script type="text/javascript">
-        Paddle.Setup({ vendor: 123456 }); // Placeholder vendor ID
+        Paddle.Setup({ vendor: 123456 }); // Placeholder Vendor ID
     </script>
-    
     <style>
         html { scroll-behavior: smooth; }
-        /* Prevent scrolling when cookie modal is active */
         .modal-active { overflow: hidden; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-active .faq-answer { max-height: 200px; }
+        .faq-active .faq-icon { transform: rotate(180deg); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans modal-active">
+<body class="bg-slate-50 text-slate-800 font-sans modal-active">
 
     <!-- Cookie Consent Modal -->
-    <div id="cookieModal" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-gray-100 text-center transform transition-all scale-100">
-            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+    <div id="cookieModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-[100] p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border border-slate-100 text-center transform transition-all">
+            <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                 </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">This website uses cookies</h3>
-            <p class="text-sm text-gray-600 mb-6 leading-relaxed">
-                We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Cookie Preferences</h3>
+            <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                We use cookies to optimize your experience, analyze web traffic, and ensure secure payments through Paddle. By entering, you agree to our privacy policy.
             </p>
-            <button id="acceptCookies" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition shadow-lg hover:shadow-indigo-200">
-                Accept & Enter Site
+            <button id="acceptCookies" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-100 hover:shadow-none">
+                Accept & Explore
             </button>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-indigo-600 tracking-tight">Agent Peel</a>
-            <div class="space-x-6 text-sm font-medium">
-                <a href="#books" class="hover:text-indigo-600 transition">Our Books</a>
-                <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
-                <a href="#legal" class="hover:text-indigo-600 transition">Legal & Compliance</a>
+    <!-- Smart Header / Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent tracking-tight">AGENT PEEL</a>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#concept" class="hover:text-indigo-600 transition">The Concept</a>
+                <a href="#books" class="hover:text-indigo-600 transition">The Books</a>
+                <a href="#faq" class="hover:text-indigo-600 transition">FAQ</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">Support</a>
             </div>
+            <a href="#books" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-bold px-5 py-2 rounded-xl text-sm transition">Shop Now</a>
         </div>
     </nav>
 
-    <!-- Hero Header -->
-    <header class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Where Detective Stories Meet Kitchen Science!</h1>
-            <p class="text-lg md:text-xl mb-8 text-indigo-100 max-w-2xl mx-auto">
-                Welcome to <span class="font-semibold text-white">The Onion Files</span>. Engaging mystery eBooks for kids in the US that spark curiosity through thrilling plots and safe, hands-on home experiments.
+    <!-- Premium Hero Section -->
+    <header class="relative overflow-hidden bg-slate-950 text-white py-24 px-6 border-b border-slate-900">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.15),transparent_50%)]"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 mb-6 border border-indigo-500/20">
+                🚀 Sparking Curiosity in Young Minds
+            </span>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
+                Where Thrilling Detective Stories <br><span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Meet Real Kitchen Science</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-10 text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
+                Welcome to <span class="text-white font-semibold">The Onion Files</span>. Immersive mystery eBooks crafted for curious kids in the US. Solve edge-of-your-seat plots using safe, hands-on experiments right on your kitchen counter!
             </p>
-            <a href="#books" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-8 py-3 rounded-full shadow-lg transition transform hover:scale-105 inline-block">Explore The Series</a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#books" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/20 transition transform hover:-translate-y-0.5 inline-block">
+                    Buy Case #1 ($2.99)
+                </a>
+                <a href="#concept" class="w-full sm:w-auto text-slate-300 hover:text-white font-semibold px-6 py-3 transition">
+                    How it works &rarr;
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Books Section -->
-    <section id="books" class="py-16 max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">The Onion Files Series</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <!-- Book 1 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col justify-between p-6">
-                <div>
-                    <div class="bg-indigo-100 h-48 rounded-xl flex items-center justify-center mb-6">
-                        <span class="text-indigo-600 font-bold text-lg">[ Book Cover: Detective in the Kitchen ]</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 text-gray-900">The Onion Files: Case #1</h3>
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        Join the ultimate kitchen detective squad in <strong>Detective in the Kitchen</strong>. Solve the mystery using clues you can only find through safe and fun science experiments right on your kitchen counter!
-                    </p>
-                </div>
-                <div>
-                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
-                        <span class="text-2xl font-extrabold text-indigo-600">$2.99 <span class="text-xs text-gray-400 font-normal">USD</span></span>
-                        
-                        <a href="#!" class="paddle_button bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-xl transition shadow inline-block text-center" data-product="Pro_01kspr4a11819gcyjqp4rzt60j">
-                            Buy Now
-                        </a>
-                    </div>
-                    <p class="text-[11px] text-gray-400 mt-2 text-center">Instant Digital Download (PDF/ePub)</p>
-                </div>
-            </div>
+    <!-- Marketing / Value Proposition Section -->
+    <section id="concept" class="py-20 max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Why Parents & Kids Love The Series</h2>
+            <p class="text-slate-600 font-medium">We bridge the gap between passive screen time and active, educational learning.</p>
+        </div>
 
-            <!-- Book 2 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col justify-between p-6">
-                <div>
-                    <div class="bg-purple-100 h-48 rounded-xl flex items-center justify-center mb-6">
-                        <span class="text-purple-600 font-bold text-lg">[ Book Cover Placeholder ]</span>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 font-bold text-xl">🕵️‍♂️</div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Gripping Narrative</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Kids follow Agent Peel into intricate mysteries that keep them turning pages, building critical reading and logical thinking skills.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 font-bold text-xl">🧪</div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">100% Safe Experiments</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Every scientific clue is uncovered using standard, everyday kitchen ingredients. No specialized equipment or dangerous chemicals required.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 font-bold text-xl">📱</div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Instant Access</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Get interactive PDF and ePub formats immediately upon checkout. Perfect for reading on iPads, tablets, Kindles, or laptops.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Books Catalog Section -->
+    <section id="books" class="py-20 bg-slate-100 border-y border-slate-200 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Choose Your Next Adventure</h2>
+                <p class="text-slate-600 font-medium">Safe checkout via Paddle. Instant digital delivery worldwide.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Book 1 (Active) -->
+                <div class="bg-white rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/60 overflow-hidden flex flex-col justify-between p-8 transition duration-300">
+                    <div>
+                        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 h-56 rounded-2xl flex flex-col items-center justify-center mb-6 text-white p-6 shadow-inner relative">
+                            <span class="absolute top-4 left-4 bg-yellow-400 text-slate-900 text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">Available Now</span>
+                            <h4 class="text-2xl font-black tracking-tight text-center">THE ONION FILES</h4>
+                            <p class="text-xs text-indigo-200 font-bold mt-1 uppercase tracking-widest">Case #1: Detective in the Kitchen</p>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Case #1: Detective in the Kitchen</h3>
+                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                            The inaugural case file! Young sleuths must help Agent Peel cracks a complex mystery using hidden codes, scientific observation, and simple kitchen chemistry experiments.
+                        </p>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2 text-gray-900">The Onion Files: Case #2</h3>
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        The mystery deepens with bigger clues and brand-new kitchen experiments. Perfect for young detectives who love science and adventure.
-                    </p>
+                    <div>
+                        <div class="flex justify-between items-center pt-6 border-t border-slate-100">
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-black text-indigo-600">$2.99</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">One-Time Purchase</span>
+                            </div>
+                            <a href="#!" class="paddle_button bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-7 py-3 rounded-xl transition shadow-lg shadow-indigo-100 hover:shadow-none" data-product="Pro_01kspr4a11819gcyjqp4rzt60j">
+                                Buy eBook
+                            </a>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-3 text-center">Format: Premium Interactive PDF / ePub</p>
+                    </div>
                 </div>
-                <div>
-                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
-                        <span class="text-2xl font-extrabold text-purple-600">$2.99 <span class="text-xs text-gray-400 font-normal">USD</span></span>
-                        <button class="bg-gray-300 text-gray-600 font-semibold px-6 py-2 rounded-xl cursor-not-allowed" disabled>
-                            Coming Soon
-                        </button>
+
+                <!-- Book 2 (Coming Soon) -->
+                <div class="bg-white/60 rounded-3xl border border-slate-200/40 overflow-hidden flex flex-col justify-between p-8 opacity-75">
+                    <div>
+                        <div class="bg-slate-200 h-56 rounded-2xl flex flex-col items-center justify-center mb-6 text-slate-500 p-6 relative">
+                            <span class="absolute top-4 left-4 bg-slate-400 text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">In Development</span>
+                            <h4 class="text-2xl font-black tracking-tight text-center text-slate-400">THE ONION FILES</h4>
+                            <p class="text-xs text-slate-400 font-bold mt-1 uppercase tracking-widest">Case #2: Coming Soon</p>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-400">Case #2: The Science Lab Secret</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                            The mystery deepens with bigger plot twists, a brand-new setting, and completely new experiments that dive into the wonders of physics and biology.
+                        </p>
                     </div>
-                    <p class="text-[11px] text-gray-400 mt-2 text-center">Instant Digital Download (PDF/ePub)</p>
+                    <div>
+                        <div class="flex justify-between items-center pt-6 border-t border-slate-100">
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-black text-slate-400">$2.99</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">🔒 Locked</span>
+                            </div>
+                            <button class="bg-slate-200 text-slate-400 font-bold px-7 py-3 rounded-xl cursor-not-allowed" disabled>
+                                Coming Soon
+                            </button>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-3 text-center">Format: Digital Download (PDF/ePub)</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section (Web3Forms Integrated) -->
-    <section id="contact" class="bg-gray-100 py-16 px-4">
-        <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
-            <h2 class="text-2xl font-bold text-center mb-2">Contact Us</h2>
-            <p class="text-gray-500 text-center text-sm mb-6">Have questions? We are here to help!</p>
+    <!-- Interactive FAQ Section -->
+    <section id="faq" class="py-20 max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-3">Frequently Asked Questions</h2>
+            <p class="text-slate-600 font-medium">Everything you need to know about Agent Peel books.</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="faq-item bg-white border border-slate-200 rounded-2xl transition">
+                <button class="w-full text-left px-6 py-5 font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>What age group is this series designed for?</span>
+                    <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer px-6 text-slate-600 text-sm leading-relaxed"><p class="pb-5">The series is perfectly curated for kids aged 8 to 12 who love solving mysteries, reading adventurous stories, and experimenting with basic science.</p></div>
+            </div>
+
+            <div class="faq-item bg-white border border-slate-200 rounded-2xl transition">
+                <button class="w-full text-left px-6 py-5 font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>Are the kitchen experiments safe for children?</span>
+                    <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer px-6 text-slate-600 text-sm leading-relaxed"><p class="pb-5">Yes, 100%. All experiments are strictly designed around everyday non-toxic kitchen household items (like baking soda, lemon juice, or water). However, parental supervision is always recommended to maximize the shared fun!</p></div>
+            </div>
+
+            <div class="faq-item bg-white border border-slate-200 rounded-2xl transition">
+                <button class="w-full text-left px-6 py-5 font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>How do I receive the books after purchasing?</span>
+                    <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer px-6 text-slate-600 text-sm leading-relaxed"><p class="pb-5">Once checkout is completed through our secure merchant partner, Paddle, you will instantly receive an email containing direct download links for both the PDF and ePub editions.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Dynamic Contact Section -->
+    <section id="contact" class="bg-slate-900 text-white py-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.1),transparent_40%)]"></div>
+        <div class="max-w-md mx-auto bg-slate-950 p-8 rounded-3xl shadow-2xl border border-slate-800/80 relative z-10">
+            <h2 class="text-2xl font-bold text-center mb-1">Get in Touch</h2>
+            <p class="text-slate-400 text-center text-xs mb-8">Have a question? Drop us a message directly.</p>
             
-            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-                <!-- Personal Web3Forms Access Key Embedded -->
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
                 <input type="hidden" name="access_key" value="b5c5fd32-f5d2-4ef3-8dbc-30fbf089b89e">
                 <input type="hidden" name="subject" value="New Inquiry from Agent Peel Website">
                 <input type="hidden" name="from_name" value="Agent Peel Support">
 
-                <!-- Subject Field -->
                 <div>
-                    <label for="formSubject" class="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Subject</label>
+                    <label for="formSubject" class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Subject</label>
                     <input type="text" id="formSubject" name="subject_topic" required 
-                           class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 text-sm transition">
+                           class="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition text-white">
                 </div>
 
-                <!-- Message Body Field -->
                 <div>
-                    <label for="formMessage" class="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Message</label>
+                    <label for="formMessage" class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Message Body</label>
                     <textarea id="formMessage" name="message" rows="4" required 
-                              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 text-sm transition resize-none"></textarea>
+                              class="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition text-white resize-none"></textarea>
                 </div>
 
-                <!-- Submit Button -->
                 <button type="submit" id="submitBtn" 
-                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition shadow-lg hover:shadow-indigo-200 flex items-center justify-center">
+                        class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl transition shadow-xl shadow-indigo-600/10 hover:shadow-none flex items-center justify-center text-sm">
                     Send Message
                 </button>
             </form>
 
-            <!-- Success Message Notification -->
             <div id="successMessage" class="hidden text-center py-6">
-                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-emerald-500/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-1">Message Sent!</h3>
-                <p class="text-sm text-gray-600">Your request has been sent successfully. We will get back to you as soon as possible.</p>
+                <h3 class="text-xl font-bold text-white mb-1.5">Message Sent!</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Your request has been sent successfully. We will review it and get back to you as soon as possible.</p>
             </div>
         </div>
     </section>
 
-    <!-- Legal Compliance Footer -->
-    <footer id="legal" class="bg-gray-900 text-gray-400 py-12 px-4 text-xs">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 border-b border-gray-800 pb-8 mb-8">
+    <!-- Comprehensive Legal & Compliance Footer -->
+    <footer id="legal" class="bg-slate-950 text-slate-500 py-16 px-6 text-xs border-t border-slate-900">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 pb-12 border-b border-slate-900 mb-10">
             <div>
-                <h4 class="text-sm font-bold text-white mb-3">Privacy Policy</h4>
-                <p class="leading-relaxed">
-                    At Agent Peel, we respect your privacy and comply with COPPA regulations. We do not knowingly collect personal data from children under 13. Any data collected during purchase (via Paddle) is strictly used for order fulfillment and customer support. We never sell or share your data with third parties.
+                <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider">Privacy Policy</h4>
+                <p class="leading-relaxed text-slate-400">
+                    At Agent Peel, we respect your family's privacy and comply strictly with COPPA regulations. We do not knowingly collect personal data from children under 13. Any details processed during transactions (managed securely via Paddle) are utilized solely for digital order fulfillment and customer support.
                 </p>
             </div>
-
             <div>
-                <h4 class="text-sm font-bold text-white mb-3">Terms of Service</h4>
-                <p class="leading-relaxed">
-                    By purchasing our digital products, you are granted a non-exclusive, non-transferable license for personal, educational, and household use only. Redistribution, reselling, or commercial use of "The Onion Files" materials without explicit written consent is strictly prohibited.
+                <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider">Terms of Service</h4>
+                <p class="leading-relaxed text-slate-400">
+                    By purchasing our digital products, you are granted a single, non-exclusive, non-transferable license for household and educational use. Unauthorized redistribution, reselling, or digital file sharing of "The Onion Files" content is legally prohibited without written authorization.
                 </p>
             </div>
-
             <div>
-                <h4 class="text-sm font-bold text-white mb-3">Refund Policy</h4>
-                <p class="leading-relaxed">
-                    Due to the nature of digital products, all sales of eBooks and digital downloads are final once the download link is generated. However, if you experience any technical difficulties opening or accessing the files, please contact us at mindsparkids@gmail.com, and we will ensure you receive full support.
+                <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider">Refund Policy</h4>
+                <p class="leading-relaxed text-slate-400">
+                    Due to the instant nature of digital downloads, all eBook sales are final once the fulfillment email is dispatched. If you run into technical issues opening or rendering the PDF/ePub files on your device, contact us at mindsparkids@gmail.com for immediate technical assistance.
                 </p>
             </div>
         </div>
 
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <div>
-                <p class="font-semibold text-white">Agent Peel</p>
-                <p class="mt-1">Contact: mindsparkids@gmail.com | Tel Aviv, Israel</p>
+                <p class="font-bold text-slate-300 text-sm tracking-tight">AGENT PEEL</p>
+                <p class="mt-1 text-slate-500">Official Merchant of Record: Paddle. Contact: mindsparkids@gmail.com | Tel Aviv, Israel</p>
             </div>
-            <p>&copy; 2026 Agent Peel. All rights reserved. Powered by Paddle as our Merchant of Record.</p>
+            <p class="text-slate-600">&copy; 2026 Agent Peel. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button Widget -->
+    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/972522997731?text=Hi!%20I%20have%20a%20question%20about%20Agent%20Peel%20books." 
        target="_blank" 
        rel="noopener noreferrer" 
        class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 z-[99] flex items-center justify-center group"
        aria-label="Contact us on WhatsApp">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-6 h-6 fill-current">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-        <span class="absolute right-16 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
-            Chat with us
-        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-6 h-6 fill-current"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        <span class="absolute right-16 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">Chat with us</span>
     </a>
 
-    <!-- Core Form & Modal Scripts -->
+    <!-- Core Interactive Logic -->
     <script>
+        // Interactive FAQ Accordion Trigger
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('faq-active');
+            
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('faq-active'));
+            
+            if (!isActive) {
+                item.classList.add('faq-active');
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
-            // Cookie Modal Management
+            // Cookie Modal Session State Control
             const modal = document.getElementById("cookieModal");
             const acceptBtn = document.getElementById("acceptCookies");
             
@@ -228,7 +320,7 @@
                 }, 300);
             });
 
-            // Asynchronous Contact Form Submission (Web3Forms AJAX)
+            // Contact Form AJAX Web3Forms Processor
             document.getElementById("contactForm").addEventListener("submit", function(e) {
                 e.preventDefault();
                 const form = e.target;
@@ -255,19 +347,18 @@
                         form.classList.add("hidden");
                         successMessage.classList.remove("hidden");
                     } else {
-                        alert("Something went wrong. Please try again or email us directly.");
+                        alert("Inquiry dispatch failed. Please try again or reach out to mindsparkids@gmail.com directly.");
                         submitBtn.disabled = false;
                         submitBtn.innerText = "Send Message";
                     }
                 })
                 .catch(error => {
-                    alert("Connection error. Please try again later.");
+                    alert("Network error encountered. Please check your connection.");
                     submitBtn.disabled = false;
                     submitBtn.innerText = "Send Message";
                 });
             });
         });
     </script>
-
 </body>
 </html>
