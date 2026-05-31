@@ -53,7 +53,7 @@
         </div>
     </nav>
 
-    <!-- Premium Hero Section featuring the Onion Detective -->
+    <!-- Premium Hero Section featuring the Onion Detective (FIXED CROP) -->
     <header class="relative overflow-hidden bg-slate-950 text-white py-24 px-6 border-b border-slate-900">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.15),transparent_50%)]"></div>
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
@@ -74,7 +74,8 @@
                 </div>
             </div>
             <div class="hidden md:block relative">
-                <img src="images/file_1.webp" alt="Agent Peel Detective" class="rounded-3xl shadow-2xl border border-slate-800 transform rotate-1 hover:rotate-0 transition duration-500 object-cover h-96 w-full">
+                <!-- Fixed aspect ratio with object-contain to prevent the detective from being cut off -->
+                <img src="images/file_1.webp" alt="Agent Peel Detective" class="rounded-3xl shadow-2xl border border-slate-800 object-contain h-auto w-full max-h-[450px]">
                 <div class="absolute -bottom-4 -left-4 bg-slate-900/90 border border-slate-800 p-4 rounded-2xl backdrop-blur-sm shadow-xl">
                     <p class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Active Investigation</p>
                     <p class="text-sm font-semibold text-white mt-0.5">10 Case Files Ready to Solve</p>
@@ -290,7 +291,7 @@
                         <h4 class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Case File #10</h4>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">The Final Secret Link</h3>
                         <p class="text-slate-600 text-xs leading-relaxed mb-4">The ultimate villain leaves a dry paper trace. Bridge liquid colors without touching them to find the clue.</p>
-                        <div class="bg-indigo-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-indigo-950 font-medium">🧪 <strong>Kitchen Science:</strong> Capillary action and liquid absorption tracking.</p></div>
+                        <div class="bg-indigo-50/70 p-3 rounded-xl mb-4"><p class="text-[11px] text-yellow-950 font-medium">🧪 <strong>Kitchen Science:</strong> Capillary action and liquid absorption tracking.</p></div>
                     </div>
                     <div class="flex justify-between items-center pt-4 border-t border-slate-100">
                         <span class="text-xl font-black text-slate-900">$2.99</span>
